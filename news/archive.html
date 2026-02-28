@@ -3,117 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Journey | Muhammad Rafay Mahmood</title>
+    <title>The Research Odyssey | Muhammad Rafay Mahmood</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        // 1. 페이지 로드 시 즉시 테마 상태 확인 (깜빡임 방지)
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        indigo: { 350: '#A5B4FC', 400: '#818CF8', 600: '#4F46E5' }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background-color: #fdfcf8; }
+        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        
+        /* 라이트/다크 배경색 정의 */
+        .bg-custom-light { background-color: #fdfcf8; }
+        .dark .bg-custom-light { background-color: #0f172a; }
     </style>
 </head>
-<body class="text-slate-800">
+<body class="bg-custom-light text-slate-800 dark:text-slate-200">
 
-    <nav class="max-w-3xl mx-auto px-6 py-10 text-sm text-slate-500">
-        <a href="../index.html" class="hover:text-indigo-600 transition-colors">← Back to Home</a>
+    <nav class="max-w-3xl mx-auto px-6 py-10 flex justify-between items-center text-sm font-medium">
+        <a href="../index.html" class="text-slate-500 dark:text-slate-400 hover:text-indigo-600 transition-colors">← Back to Home</a>
+        
+        <button id="theme-btn" class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none text-slate-500 dark:text-slate-400">
+            <div id="light-icon-content" class="flex items-center gap-2">
+                <i class="fas fa-sun text-lg text-amber-500"></i>
+                <span class="text-[10px] font-bold tracking-widest uppercase">Light</span>
+            </div>
+            <div id="dark-icon-content" class="flex items-center gap-2 hidden">
+                <i class="fas fa-moon text-lg text-slate-400"></i>
+                <span class="text-[10px] font-bold tracking-widest uppercase">Dark</span>
+            </div>
+        </button>
     </nav>
 
-    <main class="max-w-3xl mx-auto px-6 pb-10">
+    <main class="max-w-3xl mx-auto px-6 pb-20">
         <header class="mb-16">
-            <h1 class="text-3xl font-bold text-slate-900 mb-2">Research Journey</h1>
-            <p class="text-slate-500">A chronological record of my academic activities and research milestones at KHU.</p>
+            <h1 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">The Research Odyssey</h1>
+            <p class="text-slate-500 dark:text-slate-400 italic">"A chronological record of my academic growth, milestones, and the evolution of my research life."</p>
         </header>
 
-        <div class="relative border-l-2 border-slate-200 ml-4 space-y-12 pb-10">
+        <div class="relative border-l-2 border-slate-200 dark:border-slate-800 ml-4 space-y-12 pb-10">
             
             <div class="relative pl-8">
-                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-indigo-600 rounded-full border-4 border-[#fdfcf8]"></span>
+                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-indigo-600 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
                 <p class="text-xs font-bold text-indigo-600 uppercase tracking-widest mb-1">Nov 2025</p>
-                <h3 class="text-lg font-bold text-slate-900 mb-1">Excellent Research Award</h3>
-                <p class="text-slate-600 leading-relaxed">Contributed to the research presented at the 11th Korean Society for Therapeutic Ultrasound (KSTU) Conference and received the Excellent Research Award.</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Excellent Research Award</h3>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Contributed to the research presented at the 11th KSTU Conference and received the Excellent Research Award.</p>
             </div>
 
             <div class="relative pl-8">
-                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 rounded-full border-4 border-[#fdfcf8]"></span>
+                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
                 <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">May 2025</p>
-                <h3 class="text-lg font-bold text-slate-900 mb-1">Outstanding Research Poster Award</h3>
-                <p class="text-slate-600 leading-relaxed">Participated in the 65th Korean Society of Medical & Biological Engineering (KSMBE) Conference and was awarded the Outstanding Research Poster Award.</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Outstanding Research Poster Award</h3>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Participated in the 65th KSMBE Conference and was awarded the Outstanding Research Poster Award.</p>
             </div>
 
             <div class="relative pl-8">
-                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 rounded-full border-4 border-[#fdfcf8]"></span>
-                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Nov 2024</p>
-                <h3 class="text-lg font-bold text-slate-900 mb-1">Outstanding Research Paper Award</h3>
-                <p class="text-slate-600 leading-relaxed">Received the Outstanding Research Paper Award at the 64th KSMBE Conference for our work on therapeutic ultrasound.</p>
-            </div>
-
-            <div class="relative pl-8">
-                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 rounded-full border-4 border-[#fdfcf8]"></span>
-                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Oct 2024</p>
-                <h3 class="text-lg font-bold text-slate-900 mb-1">Seoul Tech Scholarship</h3>
-                <p class="text-slate-600 leading-relaxed">Awarded the Seoul Tech Scholarship in recognition of academic excellence and research potential.</p>
-            </div>
-
-            <div class="relative pl-8">
-                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 rounded-full border-4 border-[#fdfcf8]"></span>
+                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
                 <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Sept 2024</p>
-                <h3 class="text-lg font-bold text-slate-900 mb-1">Oral Presentation at ISTU 2024</h3>
-                <p class="text-slate-600 leading-relaxed">Delivered an oral presentation on "AI model of the prediction of boiling histotripsy focus: A proof-of-concept study" at the 23rd ISTU in Taipei, Taiwan.</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Oral Presentation at ISTU 2024</h3>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Delivered an oral presentation on AI models for BH focus prediction at ISTU 2024 in Taipei.</p>
             </div>
 
             <div class="relative pl-8">
-                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 rounded-full border-4 border-[#fdfcf8]"></span>
-                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Sept 2024</p>
-                <h3 class="text-lg font-bold text-slate-900 mb-1">Commenced Master's Program</h3>
-                <p class="text-slate-600 leading-relaxed">Began my M.S. degree in Biomedical Engineering at Kyung Hee University, focusing on therapeutic ultrasound algorithms.</p>
-            </div>
-
-            <div class="relative pl-8">
-                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 rounded-full border-4 border-[#fdfcf8]"></span>
+                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
                 <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Aug 2024</p>
-                <h3 class="text-lg font-bold text-slate-900 mb-1">B.S. in Biomedical Engineering</h3>
-                <p class="text-slate-600 leading-relaxed">Successfully graduated from Kyung Hee University with a Bachelor’s degree in Biomedical Engineering.</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">B.S. in Biomedical Engineering</h3>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Successfully graduated from Kyung Hee University with a Bachelor’s degree.</p>
             </div>
 
             <div class="relative pl-8">
-                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 rounded-full border-4 border-[#fdfcf8]"></span>
-                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Nov 2023</p>
-                <h3 class="text-lg font-bold text-slate-900 mb-1">KSMBE Conference Presentation</h3>
-                <p class="text-slate-600 leading-relaxed">Presented my work on "Detecting a skin layer using the Canny edge algorithm during HIFU treatment" at the 62nd KSMBE Conference.</p>
-            </div>
-
-            <div class="relative pl-8">
-                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 rounded-full border-4 border-[#fdfcf8]"></span>
-                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Oct 2023</p>
-                <h3 class="text-lg font-bold text-slate-900 mb-1">KSTU Annual Symposium</h3>
-                <p class="text-slate-600 leading-relaxed">Presented research on cavitation energy analysis during boiling histotripsy and pressure-modulated shockwave histotripsy.</p>
-            </div>
-
-            <div class="relative pl-8">
-                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 rounded-full border-4 border-[#fdfcf8]"></span>
-                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Nov 2022</p>
-                <h3 class="text-lg font-bold text-slate-900 mb-1">Outstanding Research Paper Award</h3>
-                <p class="text-slate-600 leading-relaxed">Received the Outstanding Research Paper Award as part of a team project at the KSMBE Conference.</p>
-            </div>
-
-            <div class="relative pl-8">
-                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 rounded-full border-4 border-[#fdfcf8]"></span>
-                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Oct 2022</p>
-                <h3 class="text-lg font-bold text-slate-900 mb-1">KSTU Poster Presentation</h3>
-                <p class="text-slate-600 leading-relaxed">Presented a poster on violent acoustic cavitation produced by 20 kHz ultrasound at the 8th KSTU Conference.</p>
-            </div>
-
-            <div class="relative pl-8">
-                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 rounded-full border-4 border-[#fdfcf8]"></span>
+                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
                 <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">May 2022</p>
-                <h3 class="text-lg font-bold text-slate-900 mb-1">Joined BUEL as Undergraduate Researcher</h3>
-                <p class="text-slate-600 leading-relaxed">Joined the Biomedical Ultrasound Engineering Lab (BUEL) at KHU to begin my research journey.</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Joined BUEL as Undergraduate Researcher</h3>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Joined the Biomedical Ultrasound Engineering Lab (BUEL) to begin my research journey.</p>
             </div>
 
         </div>
 
-        <footer class="mt-20 pt-10 border-t border-slate-200 flex justify-center">
-            <a href="../index.html" class="text-indigo-600 font-bold hover:underline flex items-center gap-2">
+        <footer class="mt-20 pt-10 border-t border-slate-200 dark:border-slate-800">
+            <a href="../index.html" class="text-indigo-600 font-bold hover:underline flex items-center gap-2 justify-center">
                 ← Back to Home
             </a>
         </footer>
@@ -124,5 +109,29 @@
         <span class="text-[10px] font-bold tracking-widest uppercase">TOP</span>
     </a>
 
+    <script>
+        // 테마 관리 스크립트
+        const themeBtn = document.getElementById('theme-btn');
+        const lightContent = document.getElementById('light-icon-content');
+        const darkContent = document.getElementById('dark-icon-content');
+
+        function updateThemeUI() {
+            if (document.documentElement.classList.contains('dark')) {
+                lightContent.classList.add('hidden');
+                darkContent.classList.remove('hidden');
+            } else {
+                darkContent.classList.add('hidden');
+                lightContent.classList.remove('hidden');
+            }
+        }
+        
+        updateThemeUI();
+
+        themeBtn.addEventListener('click', function() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('color-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+            updateThemeUI();
+        });
+    </script>
 </body>
 </html>
