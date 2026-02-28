@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -79,4 +79,142 @@
     </footer>
 
 </body>
+</html> -->
+
+<!-- ========================================================================================================================================================================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Rafay Mahmood | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #fdfcf8; } /* 이미지의 미색 배경 재현 */
+        .bento-card { background: white; border-radius: 12px; border: 1px solid #e5e7eb; padding: 1.5rem; transition: all 0.2s; }
+        .bento-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <nav class="max-w-6xl mx-auto px-6 py-4 flex justify-end gap-6 text-sm font-medium text-slate-600">
+        <a href="#about" class="hover:text-indigo-600">About</a>
+        <a href="#research" class="hover:text-indigo-600">Research</a>
+        <a href="#publications" class="hover:text-indigo-600">Publications</a>
+        <a href="#" class="hover:text-indigo-600">CV</a>
+        <a href="#contact" class="hover:text-indigo-600">Contact</a>
+    </nav>
+
+    <header class="max-w-6xl mx-auto px-6 py-10 border-b border-slate-200">
+        <div class="flex flex-col md:flex-row items-center gap-10">
+            <img src="/profile.jpg" alt="Profile" class="w-40 h-40 rounded-full object-cover border-4 border-white shadow-md">
+            <div class="flex-1 text-center md:text-left">
+                <h1 class="text-4xl font-bold text-slate-900 mb-2">Muhammad Rafay Mahmood</h1>
+                <p class="text-lg text-slate-500 mb-6 font-light">Biomedical Ultrasound Engineering Researcher & <br> Master Candidate</p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-4">
+                    <a href="#" class="w-10 h-10 border rounded-lg flex items-center justify-center hover:bg-slate-50"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="w-10 h-10 border rounded-lg flex items-center justify-center hover:bg-slate-50"><i class="fab fa-github"></i></a>
+                    <a href="mailto:mrafaym@khu.ac.kr" class="w-10 h-10 border rounded-lg flex items-center justify-center hover:bg-slate-50"><i class="far fa-envelope"></i></a>
+                    <a href="#" class="w-10 h-10 border rounded-lg flex items-center justify-center hover:bg-slate-50"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <a href="/assets/files/cv.pdf" class="bg-[#2d4a77] text-white px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-slate-800 transition">
+                <i class="far fa-file-pdf"></i> Download CV (PDF)
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-12 space-y-16">
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="md:col-span-2 space-y-6">
+                <h2 class="text-xl font-bold flex items-center gap-2"><i class="far fa-user"></i> About Me</h2>
+                <p class="leading-relaxed text-slate-600">
+                    My passion for **Boiling Histotripsy** and ultrasonics with ultrasonic engineering. I another ultrasonic engineering, well acting understand technology passions and well-training data and used to revolutionize non-invasive therapies for improved patient outcomes.
+                </p>
+                <p class="leading-relaxed text-slate-600 font-light italic">
+                    My vision is to revolutionize non-invasive ultrasonic methods to improve patient outcomes...
+                </p>
+            </div>
+            
+            <div class="space-y-6">
+                <h2 class="text-xl font-bold flex items-center gap-2"><i class="fas fa-graduation-cap"></i> Education</h2>
+                <div class="space-y-6 relative border-l-2 border-slate-100 pl-6 ml-2">
+                    <div class="relative">
+                        <span class="absolute -left-8 top-1 w-4 h-4 bg-indigo-600 rounded-full border-4 border-white"></span>
+                        <p class="font-bold text-sm">Kyung Hee University (KHU)</p>
+                        <p class="text-xs text-slate-500">MS in Biomedical Engineering <br> 2024 - Present</p>
+                    </div>
+                    <div class="relative">
+                        <span class="absolute -left-8 top-1 w-4 h-4 bg-slate-300 rounded-full border-4 border-white"></span>
+                        <p class="font-bold text-sm">Kyung Hee University (KHU)</p>
+                        <p class="text-xs text-slate-500">BS in Biomedical Engineering <br> 2020 - 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="space-y-6">
+            <h2 class="text-xl font-bold">Latest News <span class="text-sm font-normal text-slate-400">(Bento Grid)</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bento-card">
+                    <p class="text-xs font-bold text-slate-400 mb-2"><i class="far fa-calendar-alt"></i> FEB 2026</p>
+                    <h3 class="font-bold mb-2">Published in IEEE T-UFFC</h3>
+                    <p class="text-xs text-slate-500 mb-4">Published an innovative study on Boiling Histotripsy focus prediction...</p>
+                    <a href="#" class="text-xs font-bold hover:underline">View More News →</a>
+                </div>
+                <div class="bento-card">
+                    <p class="text-xs font-bold text-slate-400 mb-2"><i class="far fa-comment-dots"></i> NOV 2025</p>
+                    <h3 class="font-bold mb-2">Oral Talk at ISTU</h3>
+                    <p class="text-xs text-slate-500 mb-4">Oral talk at ISTU regarding the enhancement of focus prediction algorithms...</p>
+                    <a href="#" class="text-xs font-bold hover:underline">View More News →</a>
+                </div>
+                <div class="bento-card">
+                    <p class="text-xs font-bold text-slate-400 mb-2"><i class="fas fa-award"></i> AUG 2025</p>
+                    <h3 class="font-bold mb-2">Awarded Best Poster</h3>
+                    <p class="text-xs text-slate-500 mb-4">Awarded Best Poster for ultrasonic research in non-invasive surgeries...</p>
+                    <a href="#" class="text-xs font-bold hover:underline">View More News →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-6">
+            <h2 class="text-xl font-bold">Selected Publications <span class="text-sm font-normal text-slate-400">(3 cards)</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bento-card">
+                    <h3 class="font-bold mb-1">Optimized Parameters for Boiling Histotripsy</h3>
+                    <p class="text-xs text-slate-400 mb-3">TL;DR: Demonstrates tissue emulsification without thermal damage.</p>
+                    <p class="text-xs font-medium">Author / Year</p>
+                </div>
+                <div class="bento-card">
+                    <h3 class="font-bold mb-1">Acoustic Cavitation Monitoring in FUS Therapy</h3>
+                    <p class="text-xs text-slate-400 mb-3">TL;DR: A novel feedback system for therapeutic efficacy.</p>
+                    <p class="text-xs font-medium">Author / Year</p>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="#" class="text-sm font-bold text-slate-400 hover:text-slate-800 underline">View All Publications</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#1a1a1a] text-white py-10 mt-20">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400">
+            <p>Copyright © 2026 Muhammad Rafay Mahmood. Built with passion.</p>
+            <div class="flex gap-4 items-center">
+                <i class="far fa-envelope"></i>
+                <a href="mailto:mrafaym@khu.ac.kr" class="hover:text-white transition">rafay.mahmood@khu.ac.kr</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
 </html>
+
+
+
+
