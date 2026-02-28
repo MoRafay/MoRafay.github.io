@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script>
-        // 1. 페이지 로드 시 즉시 테마 상태 확인 (깜빡임 방지)
+        // 테마 로드 및 고정
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
@@ -29,8 +29,6 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; transition: background-color 0.3s, color 0.3s; }
-        
-        /* 라이트/다크 배경색 정의 */
         .bg-custom-light { background-color: #fdfcf8; }
         .dark .bg-custom-light { background-color: #0f172a; }
     </style>
@@ -64,35 +62,84 @@
                 <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-indigo-600 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
                 <p class="text-xs font-bold text-indigo-600 uppercase tracking-widest mb-1">Nov 2025</p>
                 <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Excellent Research Award</h3>
-                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Contributed to the research presented at the 11th KSTU Conference and received the Excellent Research Award.</p>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Participated in the 11th KSTU Conference as a core team member and received the Excellent Research Award for our work on exhibition research.</p>
             </div>
 
             <div class="relative pl-8">
                 <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
                 <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">May 2025</p>
                 <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Outstanding Research Poster Award</h3>
-                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Participated in the 65th KSMBE Conference and was awarded the Outstanding Research Poster Award.</p>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Contributed to the data acquisition and poster presentation for the 65th KSMBE Conference, resulting in the Outstanding Research Poster Award.</p>
+            </div>
+
+            <div class="relative pl-8">
+                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Nov 2024</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Outstanding Research Paper Award</h3>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Received the Outstanding Research Paper Award at the 64th KSMBE Conference for our contribution to medical and biological engineering research.</p>
+            </div>
+
+            <div class="relative pl-8">
+                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Oct 2024</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Seoul Tech Scholarship</h3>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Awarded the Seoul Tech Scholarship in recognition of outstanding academic performance and research potential.</p>
             </div>
 
             <div class="relative pl-8">
                 <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
                 <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Sept 2024</p>
                 <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Oral Presentation at ISTU 2024</h3>
-                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Delivered an oral presentation on AI models for BH focus prediction at ISTU 2024 in Taipei.</p>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Delivered an oral presentation on "AI model of the prediction of boiling histotripsy focus: A proof-of-concept study" in Taipei, Taiwan.</p>
+            </div>
+
+            <div class="relative pl-8">
+                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Sept 2024</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Master's Journey Begins</h3>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Commenced Master's program in Biomedical Engineering at Kyung Hee University to deepen my research in therapeutic ultrasound.</p>
             </div>
 
             <div class="relative pl-8">
                 <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
                 <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Aug 2024</p>
                 <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">B.S. in Biomedical Engineering</h3>
-                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Successfully graduated from Kyung Hee University with a Bachelor’s degree.</p>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Successfully graduated from Kyung Hee University with a Bachelor of Science degree in Biomedical Engineering.</p>
+            </div>
+
+            <div class="relative pl-8">
+                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Nov 2023</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">KSMBE Conference Presentation</h3>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Presented research on "Detecting a skin layer using the Canny edge algorithm during HIFU treatment" at the 62nd KSMBE Conference.</p>
+            </div>
+
+            <div class="relative pl-8">
+                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Oct 2023</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">9th Annual KSTU Symposium</h3>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Contributed to and presented work on cavitation energy analysis during boiling and pressure-modulated shockwave histotripsy.</p>
+            </div>
+
+            <div class="relative pl-8">
+                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Nov 2022</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Outstanding Research Paper Award</h3>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Collaboratively received the Outstanding Research Paper Award at the KSMBE conference for our team's academic contributions.</p>
+            </div>
+
+            <div class="relative pl-8">
+                <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Oct 2022</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">8th KSTU Conference Presentation</h3>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Presented a poster on violent acoustic cavitation produced by 20 kHz ultrasound in tissue phantoms.</p>
             </div>
 
             <div class="relative pl-8">
                 <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
                 <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">May 2022</p>
-                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Joined BUEL as Undergraduate Researcher</h3>
-                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Joined the Biomedical Ultrasound Engineering Lab (BUEL) to begin my research journey.</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Joined BUEL Lab</h3>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Joined the Biomedical Ultrasound Engineering Lab (BUEL) as an undergraduate researcher to begin exploring therapeutic ultrasound.</p>
             </div>
 
         </div>
@@ -110,7 +157,6 @@
     </a>
 
     <script>
-        // 테마 관리 스크립트
         const themeBtn = document.getElementById('theme-btn');
         const lightContent = document.getElementById('light-icon-content');
         const darkContent = document.getElementById('dark-icon-content');
