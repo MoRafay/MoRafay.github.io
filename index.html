@@ -43,8 +43,9 @@
 
     <nav class="max-w-6xl mx-auto px-6 py-4 flex justify-end items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-400 sticky top-0 bg-[#fdfcf8]/80 dark:bg-[#0f172a]/80 backdrop-blur-md z-50">
         <a href="#about" class="hover:text-indigo-600 transition-colors">About Me</a>
-        <a href="#news" class="hover:text-indigo-600 transition-colors">Latest News</a>
-        <a href="#publications" class="hover:text-indigo-600 transition-colors">Publications & Patents</a>
+        <a href="#experience" class="hover:text-indigo-600 transition-colors">Experience</a>
+        <a href="#news" class="hover:text-indigo-600 transition-colors">News</a>
+        <a href="#publications" class="hover:text-indigo-600 transition-colors">Publications</a>
         <a href="/assets/files/cv.pdf" download class="hover:text-indigo-600 transition-colors">CV</a>
         
         <button id="theme-btn" class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none">
@@ -60,22 +61,17 @@
     </nav>
 
     <header class="max-w-6xl mx-auto px-6 py-12 border-b border-slate-200 dark:border-slate-800">
-        <div class="flex flex-col md:flex-row items-center gap-12">
-            <img src="/Profile.jpg" alt="Profile" class="w-44 h-44 rounded-full object-cover border-4 border-indigo-400 shadow-md transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl hover:border-indigo-500 cursor-pointer">
-    
-            <div class="flex-1 text-center md:text-left">
-
-                <!-- ### ✨ 효과 상세 설명
-                * **`transition-all duration-300`**: 사진이 떠오르고 그림자가 생기는 과정이 툭 끊기지 않고 부드럽게 일어나도록 합니다.
-                * **`hover:-translate-y-2`**: 마우스를 올리면 사진이 위쪽(`-y`)으로 **8px(`-2`)**만큼 살짝 이동하여 '떠오르는' 느낌을 줍니다.
-                * **`hover:shadow-2xl`**: 떠오른 사진 아래에 아주 깊고 넓은 그림자를 드리워 입체감을 완성합니다.
-                * **`hover:border-indigo-500`**: 센스 있게 테두리 색상도 포인트 컬러인 인디고를 조금 더 진하게 바꿔주어 상호작용을 강조했습니다. -->
+        <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+            
+            <div class="flex-shrink-0">
+                <img src="/Profile.jpg" alt="Profile" class="w-50 h-50 rounded-full object-cover border-4 border-indigo-400 shadow-md">
+            </div>
             
             <div class="flex-1 text-center md:text-left">
                 <h1 class="text-4xl font-bold text-slate-900 dark:text-white mb-2">Muhammad Rafay Mahmood</h1>
                 <p class="text-lg text-slate-500 dark:text-slate-400 mb-6 font-light"> Biomedical Engineer | M.S. Candidate</p>
                 
-                <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-4">
+                <div class="flex flex-wrap justify-center md:justify-start gap-4">
                     <a href="https://www.linkedin.com/in/morafay-917a3228b" target="_blank" rel="noopener noreferrer" class="w-10 h-10 border dark:border-slate-700 rounded-lg flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
                         <i class="fab fa-linkedin-in text-slate-600 dark:text-slate-400"></i>
                     </a>
@@ -89,39 +85,27 @@
             </div>
 
             <div class="hidden md:block max-w-xs text-right">
-                <p class="text-xs font-bold text-indigo-600 dark:text-slate-400 uppercase tracking-widest mb-4">Research Interest</p>
+                <p class="text-xs font-bold text-indigo-600 uppercase tracking-widest mb-4">Research Interest</p>
                 <div class="flex flex-wrap justify-end gap-2">
-                    <span class="px-3 py-1 bg-slate-100/50 text-slate-600 dark:bg-slate-800/50 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-semibold transition hover:bg-slate-200 dark:hover:bg-slate-700 cursor-pointer">
-                        Ultrasound imaging
-                    </span>
-                    
-                    <span class="px-3 py-1 bg-slate-100/50 text-slate-600 dark:bg-slate-800/50 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-semibold transition hover:bg-slate-200 dark:hover:bg-slate-700 cursor-pointer">
-                        Deep learning
-                    </span>
-                    
-                    <span class="px-3 py-1 bg-slate-100/50 text-slate-600 dark:bg-slate-800/50 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-semibold transition hover:bg-slate-200 dark:hover:bg-slate-700 cursor-pointer">
-                        Boiling histotripsy
-                    </span>
-                    
-                    <span class="px-3 py-1 bg-slate-100/50 text-slate-600 dark:bg-slate-800/50 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-semibold transition hover:bg-slate-200 dark:hover:bg-slate-700 cursor-pointer">
-                        Pressure-modulated shockwave histotripsy
-                    </span>
+                    <span class="px-3 py-1 bg-slate-100/50 text-slate-600 dark:bg-slate-800/50 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-semibold transition hover:bg-slate-200 cursor-pointer">Ultrasound imaging</span>
+                    <span class="px-3 py-1 bg-slate-100/50 text-slate-600 dark:bg-slate-800/50 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-semibold transition hover:bg-slate-200 cursor-pointer">Deep learning</span>
+                    <span class="px-3 py-1 bg-slate-100/50 text-slate-600 dark:bg-slate-800/50 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-semibold transition hover:bg-slate-200 cursor-pointer">Boiling histotripsy</span>
+                    <span class="px-3 py-1 bg-slate-100/50 text-slate-600 dark:bg-slate-800/50 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-semibold transition hover:bg-slate-200 cursor-pointer">Shockwave histotripsy</span>
                 </div>
             </div>
-            
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 py-12 space-y-16">
+    <main class="max-w-6xl mx-auto px-6 py-12 space-y-20">
         
-        <div id="about" class="grid grid-cols-1 md:grid-cols-3 gap-12 scroll-mt-24">
+        <section id="about" class="grid grid-cols-1 md:grid-cols-3 gap-12 scroll-mt-24">
             <div class="md:col-span-2 space-y-6 text-justify">
                 <h2 class="text-xl font-bold flex items-center gap-2 text-slate-900 dark:text-white"><i class="far fa-user"></i> About Me</h2>
                 <p class="leading-relaxed text-slate-600 dark:text-slate-400">
-                    I am a Master’s researcher at the <a href="https://sites.google.com/view/biomedical-ultrasonics/home" target="_blank" class="text-indigo-600 hover:underline font-medium">Biomedical Ultrasound Engineering Lab</a> at Kyung Hee University, working under the guidance of <a href="https://scholar.google.com/citations?user=mOUp-FUAAAAJ&hl=en" target="_blank" class="text-indigo-600 hover:underline font-medium">Prof. Ki Joo Pahk</a>. My academic journey is centered on advancing therapeutic ultrasound, with a particular focus on optimizing pre-treatment algorithms for Boiling Histotripsy.
+                    I am a Master’s researcher at the <a href="https://sites.google.com/view/biomedical-ultrasonics/home" target="_blank" class="text-indigo-600 hover:underline font-medium">Biomedical Ultrasound Engineering Lab</a> at Kyung Hee University, working under the guidance of <a href="https://scholar.google.com/citations?user=mOUp-FUAAAAJ&hl=en" target="_blank" class="text-indigo-600 hover:underline font-medium">Prof. Ki Joo Pahk</a>. My academic journey is centered on advancing therapeutic ultrasound, focusing on optimizing pre-treatment algorithms for Boiling Histotripsy.
                 </p>
                 <p class="leading-relaxed text-slate-600 dark:text-slate-400">
-                    My current research activities involve implementing high-precision focus prediction models to bridge the gap between numerical simulations and experimental validation. By utilizing k-Wave simulations and Passive Cavitation Imaging (PCI), I strive to enhance the accuracy and safety of non-invasive surgical procedures.
+                    My current research involves implementing high-precision focus prediction models to bridge the gap between numerical simulations and experimental validation. By utilizing k-Wave simulations and Passive Cavitation Imaging (PCI), I strive to enhance the accuracy and safety of non-invasive surgical procedures.
                 </p>
             </div>
             
@@ -140,7 +124,28 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <section id="experience" class="space-y-8 scroll-mt-24">
+            <h2 class="text-xl font-bold flex items-center gap-2 text-slate-900 dark:text-white"><i class="fas fa-microscope"></i> Research Experience</h2>
+            <div class="space-y-12">
+                <div class="relative">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-2">
+                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">Biomedical Ultrasound Engineering Laboratory</h3>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">March 2022 - Present</span>
+                    </div>
+                    <p class="text-sm font-semibold text-indigo-600 mb-4">Research Lead (Supervisor: Ki Joo Pahk)</p>
+                    <blockquote class="border-l-4 border-slate-200 dark:border-slate-700 pl-4 py-1 mb-4 italic text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                        Developing predictive algorithms to localize acoustic focus in non-homogeneous media for high-precision therapeutic ultrasound.
+                    </blockquote>
+                    <ul class="list-disc list-outside ml-5 space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li>Engineered a numerical model for near real-time focus prediction in Boiling Histotripsy (BH), reducing the gap between simulations and experiments.</li>
+                        <li>Validated algorithm robustness across various tissue-mimicking phantoms for non-invasive surgery targeting.</li>
+                        <li>Spearheaded end-to-end research workflows and managed team roles during complex experimental sessions.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
         <section id="news" class="space-y-6 scroll-mt-24">
             <div class="flex justify-between items-end">
@@ -155,12 +160,6 @@
                 </div>
         </section>
 
-        <!-- ### 디자인 포인트 상세 설명
-        * **`ml-1`**: 텍스트와 원 사이의 적절한 간격을 위해 왼쪽 마진을 주었습니다.
-        * **`w-2.5 h-2.5`**: 너무 크지 않으면서도 시선을 끌기에 적당한 크기입니다.
-        * **`bg-green-500`**: `image_dae25b.png`에서 보셨던 선명한 초록색을 적용했습니다.
-        * **`animate-pulse`**: Tailwind 내장 애니메이션으로, 투명도가 0.5에서 1 사이를 부드럽게 오가며 색상이 옅어졌다 진해지는 효과를 만듭니다. -->
-
         <section id="publications" class="space-y-6 scroll-mt-24">
             <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
                 <i class="fas fa-scroll text-indigo-600"></i> Publications & Patent
@@ -171,12 +170,11 @@
                 <p class="text-sm mt-2 px-6 text-center">Manuscripts based on recent research activities are currently under preparation for publication.</p>
             </div>
         </section>
-
     </main>
 
     <footer class="bg-[#1e293b] text-slate-300 py-10 mt-20">
         <div class="max-w-6xl mx-auto px-6 text-sm text-left">
-            <p>Copyright © 2026 Muhammad Rafay Mahmood. All rights reserved.</p>
+            <p>Copyright © 2026 Muhammad Rafay Mahmood. Built with passion.</p>
         </div>
     </footer>
 
@@ -186,7 +184,6 @@
     </a>
 
     <script>
-        // 테마 토글 핸들러
         const themeBtn = document.getElementById('theme-btn');
         const lightContent = document.getElementById('light-icon-content');
         const darkContent = document.getElementById('dark-icon-content');
@@ -208,7 +205,6 @@
             updateThemeUI();
         });
 
-        // 뉴스 로드 (기존 로직 유지)
         async function updateNews() {
             try {
                 const response = await fetch('./news/archive.html');
