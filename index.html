@@ -137,13 +137,21 @@
         <section id="news" class="space-y-6 scroll-mt-24">
             <div class="flex justify-between items-end">
                 <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                    <i class="fas fa-newspaper text-indigo-600"></i> Latest News
+                    <i class="fas fa-newspaper text-indigo-600"></i> 
+                    Latest News
+                    <span class="ml-1 w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
                 </h2>
                 <a href="news/archive.html" class="text-sm font-bold text-indigo-600 hover:underline flex items-center gap-1">View All News →</a>
             </div>
             <div id="news-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 </div>
         </section>
+
+        ### 디자인 포인트 상세 설명
+        * **`ml-1`**: 텍스트와 원 사이의 적절한 간격을 위해 왼쪽 마진을 주었습니다.
+        * **`w-2.5 h-2.5`**: 너무 크지 않으면서도 시선을 끌기에 적당한 크기입니다.
+        * **`bg-green-500`**: `image_dae25b.png`에서 보셨던 선명한 초록색을 적용했습니다.
+        * **`animate-pulse`**: Tailwind 내장 애니메이션으로, 투명도가 0.5에서 1 사이를 부드럽게 오가며 색상이 옅어졌다 진해지는 효과를 만듭니다.
 
         <section id="publications" class="space-y-6 scroll-mt-24">
             <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
