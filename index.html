@@ -38,6 +38,7 @@
         .dark .bento-card { background: #1e293b; border-color: #334155; }
         .bento-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
     </style>
+
 </head>
 <body class="bg-custom-light text-slate-800 dark:text-slate-200">
 
@@ -61,14 +62,54 @@
     </nav>
 
     <header class="max-w-6xl mx-auto px-6 py-12 border-b border-slate-200 dark:border-slate-800">
+        <div class="flex flex-col md:flex-row items-center md:items-start justify-between gap-10">
+            
+            <div class="flex-shrink-0">
+                <img src="/Profile.jpg" alt="Profile" class="w-48 h-48 md:w-56 md:h-56 rounded-full object-cover border-4 border-indigo-400 shadow-md">
+            </div>
+            
+            <div class="flex-[2] text-center md:text-left">
+                <h1 class="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-2 whitespace-nowrap">
+                    Muhammad Rafay Mahmood
+                </h1>
+                <p class="text-lg text-slate-500 dark:text-slate-400 mb-6 font-light">Biomedical Engineer | M.S. Candidate</p>
+                
+                <div class="flex flex-wrap justify-center md:justify-start gap-3 mb-6">
+                    <a href="#" class="w-9 h-9 border dark:border-slate-700 rounded-lg flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                        <i class="fab fa-linkedin-in text-slate-600 dark:text-slate-400"></i>
+                    </a>
+                    <a href="#" class="w-9 h-9 border dark:border-slate-700 rounded-lg flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                        <i class="far fa-envelope text-slate-600 dark:text-slate-400"></i>
+                    </a>
+                    <a href="#" class="w-9 h-9 border dark:border-slate-700 rounded-lg flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                        <i class="fab fa-instagram text-slate-600 dark:text-slate-400"></i>
+                    </a>
+                </div>
+    
+                <div class="block">
+                    <p class="text-[10px] font-bold text-indigo-600 uppercase tracking-[0.2em] mb-3">Research Interest</p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-2">
+                        <span class="px-3 py-1 bg-slate-100/50 text-slate-600 dark:bg-slate-800/50 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-semibold">Ultrasound imaging</span>
+                        <span class="px-3 py-1 bg-slate-100/50 text-slate-600 dark:bg-slate-800/50 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-semibold">Deep learning</span>
+                        <span class="px-3 py-1 bg-slate-100/50 text-slate-600 dark:bg-slate-800/50 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-semibold">Boiling histotripsy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    
+    
+    /* 기존 내용
+    <!-- <header class="max-w-6xl mx-auto px-6 py-12 border-b border-slate-200 dark:border-slate-800">
         <div class="flex flex-col md:flex-row items-center justify-between gap-12">
             
             <div class="flex-shrink-0">
                 <img src="/Profile.jpg" alt="Profile" class="w-56 h-56 rounded-full object-cover border-4 border-indigo-400 shadow-md">
             </div>
             
-            <div class="flex-1 text-center md:text-left">
-                <h1 class="text-4xl font-bold text-slate-900 dark:text-white mb-2">Muhammad Rafay Mahmood</h1>
+            <div class="flex-[1.5] text-center md:text-left">
+                <h1 class="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-2">Muhammad Rafay Mahmood</h1>
                 <p class="text-lg text-slate-500 dark:text-slate-400 mb-6 font-light"> Biomedical Engineer | M.S. Candidate</p>
                 
                 <div class="flex flex-wrap justify-center md:justify-start gap-4">
@@ -94,7 +135,7 @@
                 </div>
             </div>
         </div>
-    </header>
+    </header> -->
 
     <main class="max-w-6xl mx-auto px-6 py-12 space-y-20">
         
