@@ -9,16 +9,14 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
     <script>
-        // 1. 다크 모드 초기화 및 테마 유지 로직
-        if (localStorage.getItem('color-theme') === 'dark' || 
-            (!('color-theme' in localStorage) && 
-            window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        // 1. 다크 모드 초기화 및 유지 설정
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark');
         }
 
-        // 2. Tailwind CSS 커스텀 컬러 및 다크모드 설정
+        // 2. Tailwind Custom Theme Configuration
         tailwind.config = {
             darkMode: 'class',
             theme: {
@@ -36,37 +34,30 @@
     </script>
 
     <style>
-        /* 3. 타이포그래피 및 글로벌 전환 스타일 */
+        /* 3. Typography & Global Smooth Transition */
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
         
-        html { 
-            scroll-behavior: smooth; 
-        }
+        html { scroll-behavior: smooth; }
         
         body { 
             font-family: 'Roboto', sans-serif; 
             transition: background-color 0.3s ease, color 0.3s ease; 
         }
         
-        /* 메인 페이지와 동일한 베이지/오프화이트 배경색 */
-        .bg-custom-light { 
-            background-color: #fdfcf8; 
-        }
+        /* 메인 페이지와 동일한 오프화이트 배경색 */
+        .bg-custom-light { background-color: #fdfcf8; }
+        .dark .bg-custom-light { background-color: #0f172a; }
         
-        .dark .bg-custom-light { 
-            background-color: #0f172a; 
-        }
-        
-        /* 4. 아코디언 애니메이션 물리 엔진 */
+        /* 4. Accordion Animation Physics */
         .accordion-content { 
             max-height: 0; 
             overflow: hidden; 
-            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1); 
+            transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
         }
         
-        /* 모든 섹션 기본 열림을 위한 클래스 */
+        /* 초기 로딩 시 모든 섹션을 열어두기 위한 설정 */
         .accordion-open .accordion-content { 
-            max-height: 8000px; /* 내용이 많아져도 대응 가능하도록 넉넉히 설정 */
+            max-height: 8000px; /* 모든 콘텐츠 수용 가능 */
         }
         
         .rotate-icon { 
@@ -77,13 +68,13 @@
             transform: rotate(180deg); 
         }
 
-        /* 5. 인터랙티브 필터 칩 UI 디자인 */
+        /* 5. Filter Chip & UI Interactions */
         .tag-chip { 
             border-color: transparent; 
             background: rgba(226, 232, 240, 0.5); 
             color: #64748b; 
             cursor: pointer; 
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
         }
         
         .dark .tag-chip { 
@@ -96,9 +87,7 @@
             transform: translateY(-1px);
         }
         
-        .dark .tag-chip:hover { 
-            background: #334155; 
-        }
+        .dark .tag-chip:hover { background: #334155; }
         
         .tag-chip.active { 
             border-color: #4F46E5; 
@@ -111,6 +100,20 @@
             border-color: #818CF8; 
             background: rgba(79, 70, 229, 0.2); 
             color: #A5B4FC; 
+        }
+
+        /* 6. Timeline Geometry Fix: Ensure dot sits on the line without being cut */
+        .timeline-line {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #e5e7eb; /* Light border color */
+        }
+        
+        .dark .timeline-line {
+            background-color: #334155; /* Dark border color */
         }
     </style>
 </head>
@@ -148,7 +151,7 @@
             <div class="relative">
                 <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
                 <input type="text" id="searchInput" onkeyup="filterOdyssey()" 
-                    placeholder="Search by keyword, award, or conference..." 
+                    placeholder="Search by keyword, award, or city..." 
                     class="w-full pl-12 pr-4 py-3.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all text-sm shadow-sm">
             </div>
             
@@ -169,12 +172,12 @@
                     <h2 class="text-2xl font-bold text-slate-900 dark:text-white">2025</h2>
                     <i class="fas fa-chevron-down rotate-icon text-slate-400 group-hover:text-indigo-600 transition-colors"></i>
                 </button>
-                <div class="accordion-content pt-10 pb-4 space-y-0 ml-4">
+                <div class="accordion-content pt-10 pb-4 ml-4 pl-4">
                     
-                    <div class="odyssey-item relative pl-8 pb-12 border-l-2 border-slate-200 dark:border-slate-800" data-tags="award conference poster kstu daegu bubble">
-                        <span class="absolute -left-[9px] top-1 w-4 h-4 bg-indigo-600 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
+                    <div class="odyssey-item relative pl-8 pb-12 border-l-2 border-slate-200 dark:border-slate-800" data-tags="award conference poster kstu daegu">
+                        <span class="absolute -left-[11px] top-1 w-5 h-5 bg-indigo-600 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
-                            <p class="text-xs font-bold text-indigo-600 uppercase mr-2 tracking-widest">Nov 2025</p>
+                            <p class="text-xs font-bold text-indigo-600 uppercase tracking-widest mr-2">Nov 2025</p>
                             <span class="px-2 py-0.5 bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 text-[9px] font-bold rounded uppercase">Award</span>
                             <span class="px-2 py-0.5 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-[9px] font-bold rounded uppercase">Conference</span>
                         </div>
@@ -184,12 +187,12 @@
                         </p>
                     </div>
 
-                    <div class="odyssey-item relative pl-8 pb-12 border-l-2 border-slate-200 dark:border-slate-800" data-tags="conference poster istu canada virtual fibrosis">
-                        <span class="absolute -left-[9px] top-1 w-4 h-4 bg-slate-400 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
+                    <div class="odyssey-item relative pl-8 pb-12 border-l-2 border-slate-200 dark:border-slate-800" data-tags="conference poster istu canada virtual">
+                        <span class="absolute -left-[11px] top-1 w-5 h-5 bg-slate-300 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
-                            <p class="text-xs font-bold text-slate-400 uppercase mr-2 tracking-widest">Jun 2025</p>
+                            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mr-2">Jun 2025</p>
                             <span class="px-2 py-0.5 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-[9px] font-bold rounded uppercase">Conference</span>
-                            <span class="px-2 py-0.5 bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400 text-[9px] font-bold rounded uppercase tracking-tighter">Virtual Attend</span>
+                            <span class="px-2 py-0.5 bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400 text-[9px] font-bold rounded uppercase">Virtual Attend</span>
                         </div>
                         <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Poster Presentation at ISTU 2025</h3>
                         <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
@@ -197,10 +200,10 @@
                         </p>
                     </div>
 
-                    <div class="odyssey-item relative pl-8 pb-4 border-l-2 border-transparent" data-tags="award conference poster kosombe jeju membrane">
-                        <span class="absolute -left-[9px] top-1 w-4 h-4 bg-indigo-600 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
+                    <div class="odyssey-item relative pl-8 pb-4 border-l-2 border-transparent" data-tags="award conference poster kosombe jeju">
+                        <span class="absolute -left-[11px] top-1 w-5 h-5 bg-indigo-600 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
-                            <p class="text-xs font-bold text-indigo-600 uppercase mr-2 tracking-widest">May 2025</p>
+                            <p class="text-xs font-bold text-indigo-600 uppercase tracking-widest mr-2">May 2025</p>
                             <span class="px-2 py-0.5 bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 text-[9px] font-bold rounded uppercase">Award</span>
                             <span class="px-2 py-0.5 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-[9px] font-bold rounded uppercase">Conference</span>
                         </div>
@@ -218,12 +221,12 @@
                     <h2 class="text-2xl font-bold text-slate-900 dark:text-white">2024</h2>
                     <i class="fas fa-chevron-down rotate-icon text-slate-400 group-hover:text-indigo-600 transition-colors"></i>
                 </button>
-                <div class="accordion-content pt-10 pb-4 space-y-0 ml-4">
+                <div class="accordion-content pt-10 pb-4 ml-4 pl-4">
                     
-                    <div class="odyssey-item relative pl-8 pb-12 border-l-2 border-slate-200 dark:border-slate-800" data-tags="award conference oral kosombe seoul ai">
-                        <span class="absolute -left-[9px] top-1 w-4 h-4 bg-indigo-600 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
+                    <div class="odyssey-item relative pl-8 pb-12 border-l-2 border-slate-200 dark:border-slate-800" data-tags="award conference oral kosombe seoul">
+                        <span class="absolute -left-[11px] top-1 w-5 h-5 bg-indigo-600 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
-                            <p class="text-xs font-bold text-slate-400 uppercase mr-2 tracking-widest">Nov 2024</p>
+                            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mr-2">Nov 2024</p>
                             <span class="px-2 py-0.5 bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 text-[9px] font-bold rounded uppercase">Award</span>
                             <span class="px-2 py-0.5 bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400 text-[9px] font-bold rounded uppercase">Oral</span>
                         </div>
@@ -234,19 +237,19 @@
                     </div>
 
                     <div class="odyssey-item relative pl-8 pb-12 border-l-2 border-slate-200 dark:border-slate-800" data-tags="conference poster kstu seoul dl">
-                        <span class="absolute -left-[9px] top-1 w-4 h-4 bg-slate-400 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
+                        <span class="absolute -left-[11px] top-1 w-5 h-5 bg-slate-300 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
                             <p class="text-xs font-bold text-slate-400 uppercase mr-2 tracking-widest">Nov 2024</p>
                             <span class="px-2 py-0.5 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-[9px] font-bold rounded uppercase">Conference</span>
                         </div>
                         <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Poster Presentation at KSTU 2024</h3>
                         <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
-                            Presented research on a deep learning model for predicting boiling histotripsy focus at <strong>The Annual Symposium of The Korean Society for Therapeutic Ultrasound (KSTU)</strong>, Seoul, South Korea.
+                            Deep learning model for predicting boiling histotripsy focus: A proof-of-concept study. Presented at <strong>The Annual Symposium of The Korean Society for Therapeutic Ultrasound (KSTU)</strong>, Seoul, South Korea.
                         </p>
                     </div>
 
                     <div class="odyssey-item relative pl-8 pb-12 border-l-2 border-slate-200 dark:border-slate-800" data-tags="conference oral istu taipei ai">
-                        <span class="absolute -left-[9px] top-1 w-4 h-4 bg-slate-400 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
+                        <span class="absolute -left-[11px] top-1 w-5 h-5 bg-slate-300 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
                             <p class="text-xs font-bold text-slate-400 uppercase mr-2 tracking-widest">Sept 2024</p>
                             <span class="px-2 py-0.5 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-[9px] font-bold rounded uppercase">Conference</span>
@@ -259,7 +262,7 @@
                     </div>
 
                     <div class="odyssey-item relative pl-8 pb-12 border-l-2 border-slate-200 dark:border-slate-800" data-tags="scholarship award education seoultech">
-                        <span class="absolute -left-[9px] top-1 w-4 h-4 bg-emerald-500 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
+                        <span class="absolute -left-[11px] top-1 w-5 h-5 bg-emerald-500 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
                             <p class="text-xs font-bold text-emerald-600 uppercase mr-2 tracking-widest">Sept 2024 — Present</p>
                             <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[9px] font-bold rounded uppercase">Scholarship</span>
@@ -267,12 +270,12 @@
                         <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Seoul Tech Scholarship Award</h3>
                         <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
                             <strong>Seoul Metropolitan Government Economic Development Cooperation Fund</strong>. <br>
-                            Granted to talented students pursuing technical and scientific studies to foster future leaders and innovators in the field of technology.
+                            Granted to talented students pursuing technical and scientific studies to foster future leaders and innovators in the field of technology, recognizing outstanding academic performance during Master's studies.
                         </p>
                     </div>
 
-                    <div class="odyssey-item relative pl-8 pb-12 border-l-2 border-slate-200 dark:border-slate-800" data-tags="education masters khy">
-                        <span class="absolute -left-[9px] top-1 w-4 h-4 bg-indigo-600 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
+                    <div class="odyssey-item relative pl-8 pb-12 border-l-2 border-slate-200 dark:border-slate-800" data-tags="education masters khy research">
+                        <span class="absolute -left-[11px] top-1 w-5 h-5 bg-indigo-600 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
                             <p class="text-xs font-bold text-indigo-600 uppercase mr-2 tracking-widest">Sept 2024</p>
                             <span class="px-2 py-0.5 bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400 text-[9px] font-bold rounded uppercase">Education</span>
@@ -284,7 +287,7 @@
                     </div>
 
                     <div class="odyssey-item relative pl-8 pb-4 border-l-2 border-transparent" data-tags="education bs khy">
-                        <span class="absolute -left-[9px] top-1 w-4 h-4 bg-slate-400 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
+                        <span class="absolute -left-[11px] top-1 w-5 h-5 bg-slate-400 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
                             <p class="text-xs font-bold text-slate-400 uppercase mr-2 tracking-widest">Aug 2024</p>
                             <span class="px-2 py-0.5 bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400 text-[9px] font-bold rounded uppercase">Education</span>
@@ -294,6 +297,7 @@
                             Successfully graduated from <strong>Kyung Hee University</strong> with a Bachelor of Science degree.
                         </p>
                     </div>
+
                 </div>
             </div>
 
@@ -302,10 +306,10 @@
                     <h2 class="text-2xl font-bold text-slate-900 dark:text-white transition-colors">2022 — 2023</h2>
                     <i class="fas fa-chevron-down rotate-icon text-slate-400 group-hover:text-indigo-600 transition-colors"></i>
                 </button>
-                <div class="accordion-content pt-10 pb-4 space-y-0 ml-4">
+                <div class="accordion-content pt-10 pb-4 ml-4 pl-4">
                     
                     <div class="odyssey-item relative pl-8 pb-12 border-l-2 border-slate-200 dark:border-slate-800" data-tags="conference poster kosombe seoul edge">
-                        <span class="absolute -left-[9px] top-1 w-4 h-4 bg-slate-400 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
+                        <span class="absolute -left-[11px] top-1 w-5 h-5 bg-slate-300 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
                             <p class="text-xs font-bold text-slate-400 uppercase mr-2 tracking-widest">Nov 2023</p>
                             <span class="px-2 py-0.5 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-[9px] font-bold rounded uppercase">Conference</span>
@@ -317,7 +321,7 @@
                     </div>
 
                     <div class="odyssey-item relative pl-8 pb-12 border-l-2 border-slate-200 dark:border-slate-800" data-tags="conference oral kstu seoul cavitation">
-                        <span class="absolute -left-[9px] top-1 w-4 h-4 bg-slate-400 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
+                        <span class="absolute -left-[11px] top-1 w-5 h-5 bg-slate-300 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
                             <p class="text-xs font-bold text-slate-400 uppercase mr-2 tracking-widest">Oct 2023</p>
                             <span class="px-2 py-0.5 bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400 text-[9px] font-bold rounded uppercase">Oral</span>
@@ -329,7 +333,7 @@
                     </div>
 
                     <div class="odyssey-item relative pl-8 pb-12 border-l-2 border-slate-200 dark:border-slate-800" data-tags="award conference oral kosombe incheon cavitation">
-                        <span class="absolute -left-[9px] top-1 w-4 h-4 bg-indigo-600 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
+                        <span class="absolute -left-[11px] top-1 w-5 h-5 bg-indigo-600 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
                             <p class="text-xs font-bold text-slate-400 uppercase mr-2 tracking-widest">Nov 2022</p>
                             <span class="px-2 py-0.5 bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 text-[9px] font-bold rounded uppercase">Award</span>
@@ -337,24 +341,24 @@
                         </div>
                         <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Outstanding Award at KOSOMBE 2022</h3>
                         <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
-                            Presented research on <strong>"The Generation of Acoustic Cavitation in Tissue Phantom Using Low-Frequency Ultrasound"</strong> at <strong>The Korean Society of Medical & Biological Engineering (KOSOMBE) Conference</strong> in Incheon.
+                            Presented <strong>"The Generation of Acoustic Cavitation in Tissue Phantom Using Low-Frequency Ultrasound"</strong> at <strong>The Korean Society of Medical & Biological Engineering (KOSOMBE) Conference</strong> in Incheon.
                         </p>
                     </div>
 
                     <div class="odyssey-item relative pl-8 pb-12 border-l-2 border-slate-200 dark:border-slate-800" data-tags="conference poster kstu seoul cavitation">
-                        <span class="absolute -left-[9px] top-1 w-4 h-4 bg-slate-400 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
+                        <span class="absolute -left-[11px] top-1 w-5 h-5 bg-slate-300 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
                             <p class="text-xs font-bold text-slate-400 uppercase mr-2 tracking-widest">Oct 2022</p>
                             <span class="px-2 py-0.5 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-[9px] font-bold rounded uppercase">Conference</span>
                         </div>
                         <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Poster Presentation at KSTU 2022</h3>
                         <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
-                            Presented research on <strong>"Violent Acoustic Cavitation in Tissue Phantom Produced by a 20 kHz Ultrasound"</strong> at <strong>The Annual Symposium of The Korean Society for Therapeutic Ultrasound (KSTU)</strong>, Seoul.
+                            Presented <strong>"Violent Acoustic Cavitation in Tissue Phantom Produced by a 20 kHz Ultrasound"</strong> at <strong>The Annual Symposium of The Korean Society for Therapeutic Ultrasound (KSTU)</strong>, Seoul.
                         </p>
                     </div>
 
                     <div class="odyssey-item relative pl-8 pb-4 border-l-2 border-transparent" data-tags="lab research buel khy">
-                        <span class="absolute -left-[9px] top-1 w-4 h-4 bg-indigo-600 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
+                        <span class="absolute -left-[11px] top-1 w-5 h-5 bg-indigo-600 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a] z-20"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
                             <p class="text-xs font-bold text-indigo-600 uppercase mr-2 tracking-widest">May 2022</p>
                             <span class="px-2 py-0.5 bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300 text-[9px] font-bold rounded uppercase">Lab Join</span>
@@ -385,12 +389,12 @@
     <script>
         let currentTag = 'all';
 
-        // 아코디언 토글 로직
+        // 1. Accordion Visibility Toggle
         function toggleAccordion(element) {
             element.parentElement.classList.toggle('accordion-open');
         }
 
-        // 태그 필터 인터랙션 로직
+        // 2. Interactive Tag Filter Control
         function setTagFilter(tag) {
             currentTag = tag;
             document.querySelectorAll('.tag-chip').forEach(btn => {
@@ -399,7 +403,7 @@
             filterOdyssey();
         }
 
-        // 통합 검색 및 필터링 알고리즘
+        // 3. Unified Filtering & Search Engine
         function filterOdyssey() {
             const input = document.getElementById('searchInput').value.toLowerCase();
             const items = document.querySelectorAll('.odyssey-item');
@@ -415,26 +419,26 @@
                 item.style.display = (matchesSearch && matchesTag) ? 'block' : 'none';
             });
 
-            // 필터링 결과에 따른 연도별 그룹 노출 로직
+            // Handle Group Expand/Collapse based on filter activity
             groups.forEach(group => {
                 const visibleCount = group.querySelectorAll('.odyssey-item[style="display: block;"]').length;
                 const hasVisibleContent = visibleCount > 0;
 
                 if (input || currentTag !== 'all') {
-                    // 검색이나 필터가 활발한 경우: 결과가 있는 그룹만 표시하고 강제 확장
+                    // Force expand when user is active in searching/filtering
                     group.style.display = hasVisibleContent ? 'block' : 'none';
                     if (hasVisibleContent) {
                         group.classList.add('accordion-open');
                     }
                 } else {
-                    // 초기 상태: 모든 그룹을 표시하고 요청하신 대로 모두 열린 상태 유지
+                    // Default State: Keep all groups visible and open
                     group.style.display = 'block';
                     group.classList.add('accordion-open');
                 }
             });
         }
 
-        // 테마 전환 엔진 및 UI 업데이트
+        // 4. Dark/Light Theme Switching Mechanics
         const themeBtn = document.getElementById('theme-btn');
         themeBtn.addEventListener('click', () => {
             document.documentElement.classList.toggle('dark');
@@ -456,7 +460,7 @@
             }
         }
 
-        // 페이지 초기 로드 시 UI 상태 실행
+        // Initialize UI State
         updateThemeUI();
     </script>
 </body>
