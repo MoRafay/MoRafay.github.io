@@ -4,21 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Research Odyssey | Muhammad Rafay Mahmood</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
     <script>
+        // 1. 다크 모드 초기 설정 및 로컬 스토리지 확인
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark');
         }
 
+        // 2. Tailwind Custom Configuration
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        indigo: { 350: '#A5B4FC', 400: '#818CF8', 600: '#4F46E5' }
+                        indigo: { 
+                            350: '#A5B4FC', 
+                            400: '#818CF8', 
+                            600: '#4F46E5' 
+                        }
                     }
                 }
             }
@@ -26,32 +34,76 @@
     </script>
 
     <style>
+        /* 3. Typography & Global Styles */
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+        
         html { scroll-behavior: smooth; }
-        body { font-family: 'Roboto', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            transition: background-color 0.3s, color 0.3s; 
+        }
+        
         .bg-custom-light { background-color: #fdfcf8; }
         .dark .bg-custom-light { background-color: #0f172a; }
         
-        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .accordion-open .accordion-content { max-height: 4000px; }
-        .rotate-icon { transition: transform 0.3s ease; }
-        .accordion-open .rotate-icon { transform: rotate(180deg); }
+        /* 4. Accordion Animation Logic */
+        .accordion-content { 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        
+        .accordion-open .accordion-content { 
+            max-height: 5000px; /* 충분히 넉넉하게 설정 */
+        }
+        
+        .rotate-icon { 
+            transition: transform 0.3s ease; 
+        }
+        
+        .accordion-open .rotate-icon { 
+            transform: rotate(180deg); 
+        }
 
-        .tag-chip { border-color: transparent; background: rgba(226, 232, 240, 0.5); color: #64748b; cursor: pointer; }
-        .dark .tag-chip { background: rgba(30, 41, 59, 0.5); color: #94a3b8; }
+        /* 5. Filter Chip UI Styles */
+        .tag-chip { 
+            border-color: transparent; 
+            background: rgba(226, 232, 240, 0.5); 
+            color: #64748b; 
+            cursor: pointer; 
+        }
+        
+        .dark .tag-chip { 
+            background: rgba(30, 41, 59, 0.5); 
+            color: #94a3b8; 
+        }
+        
         .tag-chip:hover { background: #e2e8f0; }
         .dark .tag-chip:hover { background: #334155; }
-        .tag-chip.active { border-color: #4F46E5; background: #EEF2FF; color: #4F46E5; }
-        .dark .tag-chip.active { border-color: #818CF8; background: rgba(79, 70, 229, 0.2); color: #A5B4FC; }
+        
+        .tag-chip.active { 
+            border-color: #4F46E5; 
+            background: #EEF2FF; 
+            color: #4F46E5; 
+        }
+        
+        .dark .tag-chip.active { 
+            border-color: #818CF8; 
+            background: rgba(79, 70, 229, 0.2); 
+            color: #A5B4FC; 
+        }
     </style>
 </head>
 
 <body class="bg-custom-light text-slate-800 dark:text-slate-200 min-h-screen">
 
     <nav class="max-w-3xl mx-auto px-6 py-10 flex justify-between items-center text-sm font-medium">
-        <a href="../index.html" class="text-slate-500 dark:text-slate-400 hover:text-indigo-600 transition-colors">← Back to Home</a>
+        <a href="../index.html" class="text-slate-500 dark:text-slate-400 hover:text-indigo-600 transition-colors">
+            <i class="fas fa-arrow-left mr-2"></i>Back to Home
+        </a>
         
-        <button id="theme-btn" class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none text-slate-500 dark:text-slate-400">
+        <button id="theme-btn" class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none">
             <div id="light-icon-content" class="flex items-center gap-2">
                 <i class="fas fa-sun text-lg text-amber-500"></i>
                 <span class="text-[10px] font-bold tracking-widest uppercase">Light</span>
@@ -64,27 +116,29 @@
     </nav>
 
     <main class="max-w-3xl mx-auto px-6 pb-20">
+        
         <header class="mb-12">
-            <h1 class="text-4xl font-bold text-slate-900 dark:text-white mb-3">The Research Odyssey</h1>
+            <h1 class="text-4xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">The Research Odyssey</h1>
             <p class="text-slate-500 dark:text-slate-400 italic text-sm border-l-2 border-indigo-400 pl-4">
                 "A chronological record of my academic growth, milestones, and the evolution of my research life."
             </p>
         </header>
 
-        <div class="mb-12 space-y-5">
+        <div class="mb-12 space-y-6">
             <div class="relative">
                 <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
                 <input type="text" id="searchInput" onkeyup="filterOdyssey()" 
-                    placeholder="Search titles, awards, or locations..." 
+                    placeholder="Search by keyword, award, or conference..." 
                     class="w-full pl-12 pr-4 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all text-sm shadow-sm">
             </div>
             
             <div id="filter-chips" class="flex flex-wrap gap-2 justify-start">
-                <button onclick="setTagFilter('all')" class="tag-chip active px-4 py-1.5 rounded-full text-[11px] font-bold border transition-all uppercase tracking-wider" data-tag="all">All</button>
-                <button onclick="setTagFilter('award')" class="tag-chip px-4 py-1.5 rounded-full text-[11px] font-bold border transition-all uppercase tracking-wider" data-tag="award">#Award</button>
-                <button onclick="setTagFilter('conference')" class="tag-chip px-4 py-1.5 rounded-full text-[11px] font-bold border transition-all uppercase tracking-wider" data-tag="conference">#Conference</button>
-                <button onclick="setTagFilter('oral')" class="tag-chip px-4 py-1.5 rounded-full text-[11px] font-bold border transition-all uppercase tracking-wider" data-tag="oral">#Oral</button>
-                <button onclick="setTagFilter('poster')" class="tag-chip px-4 py-1.5 rounded-full text-[11px] font-bold border transition-all uppercase tracking-wider" data-tag="poster">#Poster</button>
+                <button onclick="setTagFilter('all')" class="tag-chip active px-4 py-1.5 rounded-full text-[10px] font-bold border transition-all uppercase tracking-wider" data-tag="all">All Items</button>
+                <button onclick="setTagFilter('award')" class="tag-chip px-4 py-1.5 rounded-full text-[10px] font-bold border transition-all uppercase tracking-wider" data-tag="award"># Award</button>
+                <button onclick="setTagFilter('conference')" class="tag-chip px-4 py-1.5 rounded-full text-[10px] font-bold border transition-all uppercase tracking-wider" data-tag="conference"># Conference</button>
+                <button onclick="setTagFilter('oral')" class="tag-chip px-4 py-1.5 rounded-full text-[10px] font-bold border transition-all uppercase tracking-wider" data-tag="oral"># Oral</button>
+                <button onclick="setTagFilter('poster')" class="tag-chip px-4 py-1.5 rounded-full text-[10px] font-bold border transition-all uppercase tracking-wider" data-tag="poster"># Poster</button>
+                <button onclick="setTagFilter('education')" class="tag-chip px-4 py-1.5 rounded-full text-[10px] font-bold border transition-all uppercase tracking-wider" data-tag="education"># Education</button>
             </div>
         </div>
 
@@ -100,39 +154,39 @@
                     <div class="odyssey-item relative pl-8" data-tags="award conference poster kstu daegu">
                         <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-indigo-600 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
-                            <p class="text-xs font-bold text-indigo-600 uppercase mr-2">Nov 2025</p>
+                            <p class="text-xs font-bold text-indigo-600 uppercase mr-2 tracking-widest">Nov 2025</p>
                             <span class="px-2 py-0.5 bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 text-[9px] font-bold rounded uppercase">Award</span>
                             <span class="px-2 py-0.5 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-[9px] font-bold rounded uppercase">Conference</span>
                         </div>
                         <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Outstanding Award at KSTU 2025</h3>
                         <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
-                            Poster presentation on <strong>"Enhanced bubble localization in passive cavitation imaging during boiling histotripsy (BH) and pressure-modulated shockwave histotripsy (PSH)"</strong> at Daegu, South Korea.
+                            Poster presentation on <strong>"Enhanced bubble localization in passive cavitation imaging during boiling histotripsy (BH) and pressure-modulated shockwave histotripsy (PSH)"</strong> at <strong>The Annual Symposium of The Korean Society for Therapeutic Ultrasound (KSTU)</strong> in Daegu, South Korea.
                         </p>
                     </div>
 
-                    <div class="odyssey-item relative pl-8" data-tags="conference poster istu canada">
+                    <div class="odyssey-item relative pl-8" data-tags="conference poster istu canada virtual">
                         <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
-                            <p class="text-xs font-bold text-slate-400 uppercase mr-2">Jun 2025</p>
+                            <p class="text-xs font-bold text-slate-400 uppercase mr-2 tracking-widest">Jun 2025</p>
                             <span class="px-2 py-0.5 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-[9px] font-bold rounded uppercase">Conference</span>
-                            <span class="px-2 py-0.5 bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400 text-[9px] font-bold rounded uppercase">Virtual</span>
+                            <span class="px-2 py-0.5 bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400 text-[9px] font-bold rounded uppercase tracking-tighter">Virtual Attend</span>
                         </div>
                         <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Poster Presentation at ISTU 2025</h3>
                         <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
-                            Investigation of potential anti-fibrotic effects of boiling histotripsy in liver fibrosis rat models in vivo. Presented at Banff, Canada (Virtual).
+                            Investigation of potential anti-fibrotic effects of boiling histotripsy in liver fibrosis rat models in vivo. Presented at <strong>The Annual International Symposium for Therapeutic Ultrasound (ISTU)</strong>, Banff, Canada (Virtual Attend).
                         </p>
                     </div>
 
                     <div class="odyssey-item relative pl-8" data-tags="award conference poster kosombe jeju">
                         <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
-                            <p class="text-xs font-bold text-slate-400 uppercase mr-2">May 2025</p>
+                            <p class="text-xs font-bold text-slate-400 uppercase mr-2 tracking-widest">May 2025</p>
                             <span class="px-2 py-0.5 bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 text-[9px] font-bold rounded uppercase">Award</span>
                             <span class="px-2 py-0.5 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-[9px] font-bold rounded uppercase">Conference</span>
                         </div>
                         <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Outstanding Award at KOSOMBE 2025</h3>
                         <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
-                            Poster presentation on <strong>"Investigation of ultrasound-induced cellular plasma membrane deformation"</strong> at Jeju, South Korea.
+                            Poster presentation on <strong>"Investigation of ultrasound-induced cellular plasma membrane deformation"</strong> at <strong>The Korean Society of Medical & Biological Engineering (KOSOMBE) Conference</strong> in Jeju, South Korea.
                         </p>
                     </div>
 
@@ -146,41 +200,77 @@
                 </button>
                 <div class="accordion-content pt-8 pb-4 space-y-12 ml-4 border-l-2 border-slate-100 dark:border-slate-800">
                     
-                    <div class="odyssey-item relative pl-8" data-tags="award conference oral kosombe seoul">
+                    <div class="odyssey-item relative pl-8" data-tags="award conference oral kosombe seoul ai">
                         <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
-                            <p class="text-xs font-bold text-slate-400 uppercase mr-2">Nov 2024</p>
+                            <p class="text-xs font-bold text-slate-400 uppercase mr-2 tracking-widest">Nov 2024</p>
                             <span class="px-2 py-0.5 bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 text-[9px] font-bold rounded uppercase">Award</span>
                             <span class="px-2 py-0.5 bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400 text-[9px] font-bold rounded uppercase">Oral</span>
                         </div>
                         <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Outstanding Award at KOSOMBE 2024</h3>
                         <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
-                            Oral presentation on <strong>"Development of AI model for real-time predicting the focus of boiling histotripsy"</strong> at Seoul, South Korea.
+                            Oral presentation on <strong>"Development of AI model for real-time predicting the focus of boiling histotripsy"</strong> at <strong>The Korean Society of Medical & Biological Engineering (KOSOMBE) Conference</strong> in Seoul, South Korea.
                         </p>
                     </div>
 
                     <div class="odyssey-item relative pl-8" data-tags="conference poster kstu seoul dl">
                         <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
-                            <p class="text-xs font-bold text-slate-400 uppercase mr-2">Nov 2024</p>
+                            <p class="text-xs font-bold text-slate-400 uppercase mr-2 tracking-widest">Nov 2024</p>
                             <span class="px-2 py-0.5 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-[9px] font-bold rounded uppercase">Conference</span>
                         </div>
                         <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Poster Presentation at KSTU 2024</h3>
                         <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
-                            Deep learning model for predicting boiling histotripsy focus: A proof-of-concept study. Presented at Seoul, South Korea.
+                            Deep learning model for predicting boiling histotripsy focus: A proof-of-concept study. Presented at <strong>The Annual Symposium of The Korean Society for Therapeutic Ultrasound (KSTU)</strong>, Seoul, South Korea.
                         </p>
                     </div>
 
                     <div class="odyssey-item relative pl-8" data-tags="conference oral istu taipei ai">
                         <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
-                            <p class="text-xs font-bold text-slate-400 uppercase mr-2">Sept 2024</p>
+                            <p class="text-xs font-bold text-slate-400 uppercase mr-2 tracking-widest">Sept 2024</p>
                             <span class="px-2 py-0.5 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-[9px] font-bold rounded uppercase">Conference</span>
                             <span class="px-2 py-0.5 bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400 text-[9px] font-bold rounded uppercase">Oral</span>
                         </div>
                         <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Oral Presentation at ISTU 2024</h3>
                         <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
-                            AI model of the prediction of boiling histotripsy focus: A proof-of-concept study. Presented at Taipei, Taiwan.
+                            Presented <strong>"AI model of the prediction of boiling histotripsy focus: A proof-of-concept study"</strong> at <strong>The Annual International Symposium for Therapeutic Ultrasound (ISTU)</strong> in Taipei, Taiwan.
+                        </p>
+                    </div>
+
+                    <div class="odyssey-item relative pl-8" data-tags="scholarship award education">
+                        <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
+                        <div class="flex flex-wrap items-center gap-2 mb-2">
+                            <p class="text-xs font-bold text-slate-400 uppercase mr-2 tracking-widest">Oct 2024</p>
+                            <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[9px] font-bold rounded uppercase">Scholarship</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Seoul Tech Scholarship</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                            Awarded in recognition of outstanding academic performance and research potential during the first year of the Master's program.
+                        </p>
+                    </div>
+
+                    <div class="odyssey-item relative pl-8" data-tags="education masters khy">
+                        <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-indigo-600 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
+                        <div class="flex flex-wrap items-center gap-2 mb-2">
+                            <p class="text-xs font-bold text-indigo-600 uppercase mr-2 tracking-widest">Sept 2024</p>
+                            <span class="px-2 py-0.5 bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400 text-[9px] font-bold rounded uppercase">Education</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Master's Journey Begins</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                            Commenced Master's program in Biomedical Engineering at <strong>Kyung Hee University</strong> to deepen my research in therapeutic ultrasound.
+                        </p>
+                    </div>
+
+                    <div class="odyssey-item relative pl-8" data-tags="education bs">
+                        <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
+                        <div class="flex flex-wrap items-center gap-2 mb-2">
+                            <p class="text-xs font-bold text-slate-400 uppercase mr-2 tracking-widest">Aug 2024</p>
+                            <span class="px-2 py-0.5 bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400 text-[9px] font-bold rounded uppercase">Education</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">B.S. in Biomedical Engineering</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                            Successfully graduated from <strong>Kyung Hee University</strong> with a Bachelor of Science degree in Biomedical Engineering.
                         </p>
                     </div>
                 </div>
@@ -193,52 +283,64 @@
                 </button>
                 <div class="accordion-content pt-8 pb-4 space-y-12 ml-4 border-l-2 border-slate-100 dark:border-slate-800">
                     
-                    <div class="odyssey-item relative pl-8" data-tags="conference poster kosombe seoul">
+                    <div class="odyssey-item relative pl-8" data-tags="conference poster kosombe seoul edge">
                         <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
-                            <p class="text-xs font-bold text-slate-400 uppercase mr-2">Nov 2023</p>
+                            <p class="text-xs font-bold text-slate-400 uppercase mr-2 tracking-widest">Nov 2023</p>
                             <span class="px-2 py-0.5 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-[9px] font-bold rounded uppercase">Conference</span>
                         </div>
                         <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Poster Presentation at KOSOMBE 2023</h3>
                         <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
-                            Detecting a Skin Layer Using the Canny Edge Algorithm During HIFU Treatment. Presented at Seoul, South Korea.
+                            Presented <strong>"Detecting a Skin Layer Using the Canny Edge Algorithm During HIFU Treatment"</strong> at <strong>The Korean Society of Medical & Biological Engineering (KOSOMBE) Conference</strong> in Seoul.
                         </p>
                     </div>
 
                     <div class="odyssey-item relative pl-8" data-tags="conference oral kstu seoul cavitation">
                         <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
-                            <p class="text-xs font-bold text-slate-400 uppercase mr-2">Oct 2023</p>
+                            <p class="text-xs font-bold text-slate-400 uppercase mr-2 tracking-widest">Oct 2023</p>
                             <span class="px-2 py-0.5 bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400 text-[9px] font-bold rounded uppercase">Oral</span>
                         </div>
                         <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Oral Presentation at KSTU 2023</h3>
                         <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
-                            Cavitation Energy Analysis During Boiling Histotripsy and Pressure-Modulated Shockwave Histotripsy. Presented at Seoul, South Korea.
+                            Presented research on <strong>"Cavitation Energy Analysis During Boiling Histotripsy and Pressure-Modulated Shockwave Histotripsy"</strong> at <strong>The Annual Symposium of The Korean Society for Therapeutic Ultrasound (KSTU)</strong>, Seoul.
                         </p>
                     </div>
 
-                    <div class="odyssey-item relative pl-8" data-tags="award conference oral kosombe incheon">
+                    <div class="odyssey-item relative pl-8" data-tags="award conference oral kosombe incheon cavitation">
                         <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
-                            <p class="text-xs font-bold text-slate-400 uppercase mr-2">Nov 2022</p>
+                            <p class="text-xs font-bold text-slate-400 uppercase mr-2 tracking-widest">Nov 2022</p>
                             <span class="px-2 py-0.5 bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 text-[9px] font-bold rounded uppercase">Award</span>
                             <span class="px-2 py-0.5 bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400 text-[9px] font-bold rounded uppercase">Oral</span>
                         </div>
                         <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Outstanding Award at KOSOMBE 2022</h3>
                         <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
-                            Oral presentation on <strong>"The Generation of Acoustic Cavitation in Tissue Phantom Using Low-Frequency Ultrasound"</strong> at Incheon, South Korea.
+                            Presented research on <strong>"The Generation of Acoustic Cavitation in Tissue Phantom Using Low-Frequency Ultrasound"</strong> at <strong>The Korean Society of Medical & Biological Engineering (KOSOMBE) Conference</strong> in Incheon.
                         </p>
                     </div>
 
-                    <div class="odyssey-item relative pl-8" data-tags="conference poster kstu seoul">
+                    <div class="odyssey-item relative pl-8" data-tags="conference poster kstu seoul cavitation">
                         <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
                         <div class="flex flex-wrap items-center gap-2 mb-2">
-                            <p class="text-xs font-bold text-slate-400 uppercase mr-2">Oct 2022</p>
+                            <p class="text-xs font-bold text-slate-400 uppercase mr-2 tracking-widest">Oct 2022</p>
                             <span class="px-2 py-0.5 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-[9px] font-bold rounded uppercase">Conference</span>
                         </div>
                         <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Poster Presentation at KSTU 2022</h3>
                         <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
-                            Violent Acoustic Cavitation in Tissue Phantom Produced by a 20 kHz Ultrasound. Presented at Seoul, South Korea.
+                            Presented research on <strong>"Violent Acoustic Cavitation in Tissue Phantom Produced by a 20 kHz Ultrasound"</strong> at <strong>The Annual Symposium of The Korean Society for Therapeutic Ultrasound (KSTU)</strong>, Seoul.
+                        </p>
+                    </div>
+
+                    <div class="odyssey-item relative pl-8" data-tags="lab research buel khy">
+                        <span class="absolute -left-[9px] top-1.5 w-4 h-4 bg-indigo-600 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
+                        <div class="flex flex-wrap items-center gap-2 mb-2">
+                            <p class="text-xs font-bold text-indigo-600 uppercase mr-2 tracking-widest">May 2022</p>
+                            <span class="px-2 py-0.5 bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300 text-[9px] font-bold rounded uppercase">Lab Join</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Joined BUEL Lab</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                            Joined the <strong>Biomedical Ultrasound Engineering Lab (BUEL)</strong> as an undergraduate researcher to begin exploring therapeutic ultrasound.
                         </p>
                     </div>
 
@@ -247,8 +349,8 @@
 
         </div>
 
-        <footer class="mt-20 pt-10 border-t border-slate-200 dark:border-slate-800">
-            <a href="../index.html" class="text-indigo-600 font-bold hover:underline flex items-center gap-2 justify-center transition-all hover:gap-4">
+        <footer class="mt-20 pt-10 border-t border-slate-200 dark:border-slate-800 text-center">
+            <a href="../index.html" class="text-indigo-600 font-bold hover:underline transition-all hover:gap-4 flex items-center justify-center gap-2">
                 ← Back to Home
             </a>
         </footer>
@@ -262,10 +364,12 @@
     <script>
         let currentTag = 'all';
 
+        // Accordion Toggle Logic
         function toggleAccordion(element) {
             element.parentElement.classList.toggle('accordion-open');
         }
 
+        // Tag Filter Logic
         function setTagFilter(tag) {
             currentTag = tag;
             document.querySelectorAll('.tag-chip').forEach(btn => {
@@ -274,6 +378,7 @@
             filterOdyssey();
         }
 
+        // Main Filtering Function (Search + Tags)
         function filterOdyssey() {
             const input = document.getElementById('searchInput').value.toLowerCase();
             const items = document.querySelectorAll('.odyssey-item');
@@ -282,11 +387,14 @@
             items.forEach(item => {
                 const text = item.innerText.toLowerCase();
                 const tags = item.getAttribute('data-tags').split(' ');
+                
                 const matchesSearch = text.includes(input);
                 const matchesTag = currentTag === 'all' || tags.includes(currentTag);
+
                 item.style.display = (matchesSearch && matchesTag) ? 'block' : 'none';
             });
 
+            // Group Visibility Logic
             groups.forEach(group => {
                 const visibleCount = group.querySelectorAll('.odyssey-item[style="display: block;"]').length;
                 if (input || currentTag !== 'all') {
@@ -294,12 +402,17 @@
                     if (visibleCount > 0) group.classList.add('accordion-open');
                 } else {
                     group.style.display = 'block';
-                    if (group.getAttribute('data-year') === '2022-2023') group.classList.remove('accordion-open');
-                    else group.classList.add('accordion-open');
+                    // Reset to initial state
+                    if (group.getAttribute('data-year') === '2022-2023') {
+                        group.classList.remove('accordion-open');
+                    } else {
+                        group.classList.add('accordion-open');
+                    }
                 }
             });
         }
 
+        // Theme Toggle Logic
         const themeBtn = document.getElementById('theme-btn');
         themeBtn.addEventListener('click', () => {
             document.documentElement.classList.toggle('dark');
