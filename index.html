@@ -71,30 +71,28 @@
     <header class="max-w-6xl mx-auto px-6 py-16 border-b border-slate-200 dark:border-slate-800">
         <div class="flex flex-col md:flex-row items-center justify-start gap-16">
             
-            <div class="flex-shrink-0 group relative w-64 h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-indigo-400 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(79,70,229,0.3)] isolate">
+            <div class="flex-shrink-0 group relative w-64 h-64 md:w-72 md:h-72 rounded-full overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(79,70,229,0.3)] isolate" style="clip-path: circle(50%);">
     
-                <img src="/assets/Profile.jpg" alt="Profile" class="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-110">
+                <img src="/assets/Profile.jpg" alt="Profile" 
+                     class="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-110 will-change-transform">
             
-                <div class="absolute inset-0 rounded-full bg-indigo-900/40 backdrop-blur-sm flex items-center justify-center gap-5 opacity-0 group-hover:opacity-100 transition-all duration-300" style="transform: translateZ(0); -webkit-mask-image: -webkit-radial-gradient(white, black);">
+                <div class="absolute inset-0 rounded-full bg-indigo-900/40 backdrop-blur-sm flex items-center justify-center gap-5 opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <a href="https://www.linkedin.com/in/morafay-917a3228b" target="_blank" class="w-12 h-12 bg-white/20 hover:bg-white/40 text-white rounded-xl flex items-center justify-center backdrop-blur-md transition-all hover:scale-110">
                         <i class="fab fa-linkedin-in text-xl"></i>
                     </a>
-            
                     <a href="https://x.com/rafayinkorea?s=21" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/20 hover:bg-white/40 text-white rounded-xl flex items-center justify-center backdrop-blur-md transition-all hover:scale-110">
                         <i class="fab fa-x-twitter text-xl"></i>
                     </a>
-                
                     <button onclick="copyEmailToClipboard()" class="relative w-12 h-12 bg-white/20 hover:bg-white/40 text-white rounded-xl flex items-center justify-center backdrop-blur-md transition-all hover:scale-110 group/btn focus:outline-none">
                         <i class="far fa-envelope text-xl"></i>
-                        <span id="copy-tooltip" class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[10px] px-2 py-1 rounded opacity-0 transition-opacity pointer-events-none font-bold uppercase tracking-tighter">
-                            Copied!
-                        </span>
+                        <span id="copy-tooltip" class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[10px] px-2 py-1 rounded opacity-0 transition-opacity pointer-events-none font-bold uppercase tracking-tighter">Copied!</span>
                     </button>
-                
                     <a href="https://www.instagram.com/mo_.rafi__" target="_blank" class="w-12 h-12 bg-white/20 hover:bg-white/40 text-white rounded-xl flex items-center justify-center backdrop-blur-md transition-all hover:scale-110">
                         <i class="fab fa-instagram text-xl"></i>
                     </a>
                 </div>
+            
+                <div class="absolute inset-0 rounded-full border-4 border-indigo-400 pointer-events-none z-20"></div>
             </div>
             
             <div class="flex-1 text-center md:text-left">
