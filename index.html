@@ -95,12 +95,12 @@
     <header class="max-w-6xl mx-auto px-6 py-16 border-b border-slate-200 dark:border-slate-800">
         <div class="flex flex-col md:flex-row items-center justify-start gap-16">
             
-            <div class="flex-shrink-0 group">
-                <img src="/Profile.jpg" alt="Profile" 
-                     class="w-64 h-64 md:w-72 md:h-72 rounded-full object-cover border-4 border-indigo-400 
-                            shadow-md transition-all duration-300 ease-out
-                            hover:-translate-y-3 hover:shadow-[0_20px_50px_rgba(79,70,229,0.3)] 
-                            cursor-pointer">
+            <div class="flex-shrink-0 group relative w-64 h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-indigo-400 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(79,70,229,0.3)]">
+                
+                <img src="/Profile.jpg" alt="Profile" class="w-full h-full object-cover">
+    
+                <div class="scan-line"></div>
+                
             </div>
             
             <div class="flex-1 text-center md:text-left">
@@ -112,21 +112,17 @@
                 </p>
                 
                 <div class="flex flex-wrap justify-center md:justify-start gap-5">
-                    <a href="https://www.linkedin.com/in/morafay-917a3228b" target="_blank" rel="noopener noreferrer" 
-                       class="w-11 h-11 border dark:border-slate-700 rounded-xl flex items-center justify-center hover:bg-indigo-50 dark:hover:bg-slate-800 hover:border-indigo-400 transition-all">
-                        <i class="fab fa-linkedin-in text-slate-600 dark:text-slate-400 group-hover:text-indigo-600"></i>
+                    <a href="https://www.linkedin.com/in/morafay-917a3228b" target="_blank" class="w-11 h-11 border dark:border-slate-700 rounded-xl flex items-center justify-center hover:bg-indigo-50 dark:hover:bg-slate-800 hover:border-indigo-400 transition-all">
+                        <i class="fab fa-linkedin-in text-slate-600 dark:text-slate-400"></i>
                     </a>
-                    <a href="mailto:mrafaym@khu.ac.kr" 
-                       class="w-11 h-11 border dark:border-slate-700 rounded-xl flex items-center justify-center hover:bg-indigo-50 dark:hover:bg-slate-800 hover:border-indigo-400 transition-all">
+                    <a href="mailto:mrafaym@khu.ac.kr" class="w-11 h-11 border dark:border-slate-700 rounded-xl flex items-center justify-center hover:bg-indigo-50 dark:hover:bg-slate-800 hover:border-indigo-400 transition-all">
                         <i class="far fa-envelope text-slate-600 dark:text-slate-400"></i>
                     </a>
-                    <a href="https://www.instagram.com/mo_.rafi__" target="_blank" rel="noopener noreferrer" 
-                       class="w-11 h-11 border dark:border-slate-700 rounded-xl flex items-center justify-center hover:bg-indigo-50 dark:hover:bg-slate-800 hover:border-indigo-400 transition-all">
+                    <a href="https://www.instagram.com/mo_.rafi__" target="_blank" class="w-11 h-11 border dark:border-slate-700 rounded-xl flex items-center justify-center hover:bg-indigo-50 dark:hover:bg-slate-800 hover:border-indigo-400 transition-all">
                         <i class="fab fa-instagram text-slate-600 dark:text-slate-400"></i>
                     </a>
                 </div>
             </div>
-    
         </div>
     </header>
     
