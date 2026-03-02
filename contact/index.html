@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Muhammad Rafay Mahmood</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #fdfcf8; color: #1e293b; }
+        .dark body { background-color: #0f172a; color: #f1f5f9; }
+        .bento-card { background: white; border-radius: 12px; border: 1px solid #e5e7eb; padding: 1.5rem; transition: all 0.2s; }
+        .dark .bento-card { background: #1e293b; border-color: #334155; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-6">
+    
+    <main class="max-w-2xl w-full space-y-8 text-center">
+        <header class="space-y-4">
+            <h1 class="text-4xl font-extrabold tracking-tight">Get in Touch</h1>
+            <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
+                I am always open to discussing new research opportunities or potential collaborations.<br>
+                Feel free to reach out via email or any of the platforms below.
+            </p>
+        </header>
+
+        <div class="bento-card py-10 space-y-4 hover:border-indigo-400 transition-all">
+            <div class="w-16 h-16 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <i class="far fa-envelope text-3xl"></i>
+            </div>
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Email Address</p>
+            <a href="mailto:mrafaym@khu.ac.kr" class="text-2xl md:text-3xl font-bold text-indigo-600 hover:underline break-all">
+                mrafaym@khu.ac.kr
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <a href="https://www.linkedin.com/in/morafay-917a3228b" target="_blank" class="bento-card flex items-center justify-center gap-3 hover:shadow-lg transition-all group">
+                <i class="fab fa-linkedin-in text-slate-400 group-hover:text-indigo-600"></i>
+                <span class="font-bold">LinkedIn</span>
+            </a>
+            <a href="#" class="bento-card flex items-center justify-center gap-3 hover:shadow-lg transition-all group">
+                <i class="fas fa-graduation-cap text-slate-400 group-hover:text-indigo-600"></i>
+                <span class="font-bold">Scholar</span>
+            </a>
+            <a href="https://www.instagram.com/mo_.rafi__" target="_blank" class="bento-card flex items-center justify-center gap-3 hover:shadow-lg transition-all group">
+                <i class="fab fa-instagram text-slate-400 group-hover:text-pink-500"></i>
+                <span class="font-bold">Instagram</span>
+            </a>
+        </div>
+
+        <footer class="pt-8">
+            <a href="/" class="text-sm font-bold text-slate-400 hover:text-indigo-600 transition-colors">
+                ← Back to Home
+            </a>
+        </footer>
+    </main>
+
+</body>
+</html>
