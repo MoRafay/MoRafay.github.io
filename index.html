@@ -2,373 +2,428 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta 
+        name="viewport" 
+        content="width=device-width, initial-scale=1.0"
+    >
     <title>Muhammad Rafay Mahmood</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-
     
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+        rel="stylesheet"
+    >
+
     <script>
-        // 1. 다크 모드 초기 설정
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        /**
+         * 1. 다크 모드 초기 설정
+         * 사용자의 이전 설정을 로컬 스토리지에서 불러오거나 시스템 설정을 따릅니다.
+         */
+        if (localStorage.getItem('color-theme') === 'dark' || 
+            (!('color-theme' in localStorage) && 
+            window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark');
         }
 
+        /**
+         * 2. Tailwind 커스텀 설정
+         * 디자인의 통일성을 위해 커스텀 인디고 컬러를 정의합니다.
+         */
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        indigo: { 350: '#A5B4FC', 400: '#818CF8', 600: '#4F46E5' }
+                        indigo: { 
+                            350: '#A5B4FC', 
+                            400: '#818CF8', 
+                            600: '#4F46E5' 
+                        }
                     }
                 }
             }
         }
     </script>
 
-    
     <style>
+        /**
+         * 3. 타이포그래피 및 글로벌 스타일
+         */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s, color 0.3s; } 
         
-        .bg-custom-light { background-color: #fdfcf8; }
-        .dark .bg-custom-light { background-color: #0f172a; }        
+        html { 
+            scroll-behavior: smooth; 
+        }
         
-        /* 벤토 카드 스타일 */
-        .bento-card { background: white; border-radius: 12px; border: 1px solid #e5e7eb; padding: 1.5rem; transition: all 0.2s; }
-        .dark .bento-card { background: #1e293b; border-color: #334155; }
-        .bento-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-    </style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            transition: background-color 0.3s ease, color 0.3s ease; 
+        } 
+        
+        /* 메인 페이지 배경색 설정 */
+        .bg-custom-light { 
+            background-color: #fdfcf8; 
+        }
+        
+        .dark .bg-custom-light { 
+            background-color: #0f172a; 
+        }        
+        
+        /**
+         * 4. 벤토 카드 디자인
+         * 모든 카드 섹션에 통일된 디자인을 적용합니다.
+         */
+        .bento-card { 
+            background: white; 
+            border-radius: 12px; 
+            border: 1px solid #e5e7eb; 
+            padding: 1.5rem; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        
+        .dark .bento-card { 
+            background: #1e293b; 
+            border-color: #334155; 
+        }
+        
+        .bento-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); 
+        }
 
+        /**
+         * 5. 모바일 메뉴 애니메이션
+         */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in-down { 
+            animation: fadeInDown 0.4s ease-out forwards; 
+        }
+    </style>
 </head>
 
+<body class="bg-custom-light text-slate-800 dark:text-slate-200 min-h-screen flex flex-col">
 
-    
-<body class="bg-custom-light text-slate-800 dark:text-slate-200">
-
-    <!-- <nav class="max-w-6xl mx-auto px-6 py-4 flex justify-end items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-400 sticky top-0 bg-[#fdfcf8]/80 dark:bg-[#0f172a]/80 backdrop-blur-md z-50">
-        <a href="#about" class="hover:text-indigo-600 transition-colors">About Me</a>     
-        <a href="#news" class="hover:text-indigo-600 transition-colors">News</a>
-        <a href="#publications" class="hover:text-indigo-600 transition-colors">Publications</a>
-        <a href="/assets/files/cv.pdf" download class="hover:text-indigo-600 transition-colors">CV</a>
-        <a href="/contact/" class="hover:text-indigo-600 transition-colors">Contact</a>     
+    <nav class="max-w-6xl mx-auto px-6 py-6 w-full flex justify-between items-center sticky top-0 bg-custom-light/90 dark:bg-[#0f172a]/90 backdrop-blur-md z-50 border-b border-slate-200/50 dark:border-slate-800/50">
         
-        <button id="theme-btn" class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none">
-            <div id="light-icon-content" class="flex items-center gap-2">
-                <i class="fas fa-sun text-lg text-amber-500"></i>
-                <span class="text-[10px] font-bold tracking-widest uppercase">Light</span>
-            </div>
-            <div id="dark-icon-content" class="flex items-center gap-2 hidden">
-                <i class="fas fa-moon text-lg text-slate-400"></i>
-                <span class="text-[10px] font-bold tracking-widest uppercase">Dark</span>
-            </div>
-        </button>
-    </nav> -->
-
-    <nav class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center sticky top-0 bg-custom-light/80 backdrop-blur-md z-50">
-        <a href="/" class="text-lg font-bold text-slate-900 dark:text-white tracking-tighter transition-all hover:text-indigo-600">
+        <a 
+            href="/" 
+            class="text-xl font-bold text-slate-900 dark:text-white tracking-tighter hover:text-indigo-600 transition-colors"
+        >
             Muhammad Rafay
         </a>
     
-        <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600 dark:text-slate-400">
-            <a href="/#about" class="hover:text-indigo-600 transition-colors">About</a>
-            <a href="/news/" class="hover:text-indigo-600 transition-colors">News</a>
-            <a href="/#publications" class="hover:text-indigo-600 transition-colors">Publications</a>
-            <a href="/assets/files/cv.pdf" class="hover:text-indigo-600 transition-colors">CV</a>
-            <a href="/contact/" class="hover:text-indigo-600 transition-colors">Contact</a>
+        <div class="hidden md:flex items-center gap-10 text-sm font-semibold text-slate-600 dark:text-slate-400">
+            <a 
+                href="/#about" 
+                class="hover:text-indigo-600 transition-colors"
+            >About</a>
+            <a 
+                href="news/archive.html" 
+                class="hover:text-indigo-600 transition-colors"
+            >News</a>
+            <a 
+                href="/#publications" 
+                class="hover:text-indigo-600 transition-colors"
+            >Publications</a>
+            <a 
+                href="/assets/files/cv.pdf" 
+                target="_blank"
+                class="hover:text-indigo-600 transition-colors"
+            >CV</a>
+            <a 
+                href="/contact/" 
+                class="hover:text-indigo-600 transition-colors"
+            >Contact</a>
             
-            <button id="theme-btn-desktop" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
-                <i class="fas fa-sun text-amber-500 dark:hidden"></i>
-                <i class="fas fa-moon text-slate-400 hidden dark:block"></i>
+            <button 
+                id="theme-btn-desktop" 
+                class="ml-4 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none"
+            >
+                <i class="fas fa-sun text-lg text-amber-500 dark:hidden"></i>
+                <i class="fas fa-moon text-lg text-slate-400 hidden dark:block"></i>
             </button>
         </div>
     
         <div class="flex md:hidden items-center gap-3">
-            <button id="theme-btn-mobile" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
-                <i class="fas fa-sun text-amber-500 dark:hidden"></i>
-                <i class="fas fa-moon text-slate-400 hidden dark:block"></i>
+            <button 
+                id="theme-btn-mobile" 
+                class="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none"
+            >
+                <i class="fas fa-sun text-lg text-amber-500 dark:hidden"></i>
+                <i class="fas fa-moon text-lg text-slate-400 hidden dark:block"></i>
             </button>
     
-            <button onclick="toggleMobileMenu()" class="p-2 text-slate-600 dark:text-slate-400 focus:outline-none">
-                <i id="menu-icon" class="fas fa-bars text-xl"></i>
+            <button 
+                onclick="toggleMobileMenu()" 
+                class="p-2 text-slate-600 dark:text-slate-400 focus:outline-none"
+            >
+                <i id="menu-icon" class="fas fa-bars text-2xl"></i>
             </button>
         </div>
     
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-6 flex flex-col gap-5 text-base font-semibold shadow-xl animate-fade-in-down">
-            <a href="/#about" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-indigo-600">About</a>
-            <a href="/news/" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-indigo-600">News</a>
-            <a href="/#publications" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-indigo-600">Publications</a>
-            <a href="/assets/files/cv.pdf" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-indigo-600">CV</a>
-            <a href="/contact/" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-indigo-600 border-t border-slate-100 dark:border-slate-800 pt-4">Contact</a>
+        <div 
+            id="mobile-menu" 
+            class="hidden absolute top-full left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-10 flex flex-col gap-8 text-lg font-semibold shadow-2xl animate-fade-in-down"
+        >
+            <a href="/#about" onclick="toggleMobileMenu()" class="hover:text-indigo-600">About Me</a>
+            <a href="news/archive.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">The Research Odyssey</a>
+            <a href="/#publications" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Publications</a>
+            <a href="/assets/files/cv.pdf" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Download CV</a>
+            <a href="/contact/" onclick="toggleMobileMenu()" class="pt-6 border-t border-slate-100 dark:border-slate-800 hover:text-indigo-600">Contact Info</a>
         </div>
     </nav>
 
-    <header class="max-w-6xl mx-auto px-6 py-16 border-b border-slate-200 dark:border-slate-800">
-        <div class="flex flex-col md:flex-row items-center justify-start gap-16">
+    <header class="max-w-6xl mx-auto px-6 py-24 w-full border-b border-slate-200 dark:border-slate-800">
+        <div class="flex flex-col md:flex-row items-center justify-start gap-20">
             
-            <div class="flex-shrink-0 group relative w-64 h-64 md:w-72 md:h-72 rounded-full overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(79,70,229,0.3)] isolate" style="clip-path: circle(50%);">
-    
-                <img src="/assets/Profile.jpg" alt="Profile" 
-                     class="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-110 will-change-transform">
-            
-                <div class="absolute inset-0 rounded-full bg-indigo-900/40 backdrop-blur-sm flex items-center justify-center gap-5 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <a href="https://www.linkedin.com/in/morafay-917a3228b" target="_blank" class="w-12 h-12 bg-white/20 hover:bg-white/40 text-white rounded-xl flex items-center justify-center backdrop-blur-md transition-all hover:scale-110">
-                        <i class="fab fa-linkedin-in text-xl"></i>
+            <div 
+                class="flex-shrink-0 group relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(79,70,229,0.3)] isolate" 
+                style="clip-path: circle(50%);"
+            >
+                <img 
+                    src="/assets/Profile.jpg" 
+                    alt="Muhammad Rafay Mahmood" 
+                    class="w-full h-full object-cover rounded-full transition-transform duration-700 group-hover:scale-110 will-change-transform"
+                >
+                
+                <div class="absolute inset-0 rounded-full bg-indigo-900/40 backdrop-blur-sm flex items-center justify-center gap-6 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <a href="https://www.linkedin.com/in/morafay-917a3228b" target="_blank" class="w-14 h-14 bg-white/20 hover:bg-white/40 text-white rounded-2xl flex items-center justify-center backdrop-blur-md transition-all hover:scale-110">
+                        <i class="fab fa-linkedin-in text-2xl"></i>
                     </a>
-                    <a href="https://x.com/rafayinkorea?s=21" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/20 hover:bg-white/40 text-white rounded-xl flex items-center justify-center backdrop-blur-md transition-all hover:scale-110">
-                        <i class="fab fa-x-twitter text-xl"></i>
+                    <a href="https://x.com/rafayinkorea?s=21" target="_blank" class="w-14 h-14 bg-white/20 hover:bg-white/40 text-white rounded-2xl flex items-center justify-center backdrop-blur-md transition-all hover:scale-110">
+                        <i class="fab fa-x-twitter text-2xl"></i>
                     </a>
-                    <button onclick="copyEmailToClipboard()" class="relative w-12 h-12 bg-white/20 hover:bg-white/40 text-white rounded-xl flex items-center justify-center backdrop-blur-md transition-all hover:scale-110 group/btn focus:outline-none">
-                        <i class="far fa-envelope text-xl"></i>
-                        <span id="copy-tooltip" class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[10px] px-2 py-1 rounded opacity-0 transition-opacity pointer-events-none font-bold uppercase tracking-tighter">Copied!</span>
+                    <button onclick="copyEmailToClipboard()" class="relative w-14 h-14 bg-white/20 hover:bg-white/40 text-white rounded-2xl flex items-center justify-center backdrop-blur-md transition-all hover:scale-110">
+                        <i class="far fa-envelope text-2xl"></i>
+                        <span id="copy-tooltip" class="absolute -top-12 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[10px] px-3 py-1.5 rounded-lg opacity-0 transition-opacity font-bold uppercase tracking-widest">Copied!</span>
                     </button>
-                    <a href="https://www.instagram.com/mo_.rafi__" target="_blank" class="w-12 h-12 bg-white/20 hover:bg-white/40 text-white rounded-xl flex items-center justify-center backdrop-blur-md transition-all hover:scale-110">
-                        <i class="fab fa-instagram text-xl"></i>
+                    <a href="https://www.instagram.com/mo_.rafi__" target="_blank" class="w-14 h-14 bg-white/20 hover:bg-white/40 text-white rounded-2xl flex items-center justify-center backdrop-blur-md transition-all hover:scale-110">
+                        <i class="fab fa-instagram text-2xl"></i>
                     </a>
                 </div>
-            
+                
                 <div class="absolute inset-0 rounded-full border-4 border-indigo-400 pointer-events-none z-20"></div>
             </div>
-            
-            <div class="flex-1 text-center md:text-left">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-3 tracking-tight">
+
+            <div class="flex-1 text-center md:text-left space-y-6">
+                <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-none">
                     Muhammad Rafay Mahmood
                 </h1>
-                <p class="text-xl text-slate-500 dark:text-slate-400 mb-6 font-light italic">
+                <p class="text-2xl text-slate-500 dark:text-slate-400 font-light italic leading-relaxed">
                     Postgraduate researcher in Therapeutic Ultrasound & Medical Imaging
                 </p>
             </div>
         </div>
     </header>
-    
-    
-    <main class="max-w-6xl mx-auto px-6 py-12 space-y-20">
 
+    <main class="max-w-6xl mx-auto px-6 py-20 space-y-32 w-full">
 
-        <section id="about" class="grid grid-cols-1 md:grid-cols-3 gap-12 scroll-mt-24">
-            <div class="md:col-span-2 space-y-8 text-justify">
-                <div class="space-y-6">
-                    <h2 class="text-xl font-bold flex items-center gap-2 text-slate-900 dark:text-white">
-                        <i class="far fa-user text-indigo-600 dark:text-indigo-400"></i> About Me
+        <section id="about" class="grid grid-cols-1 md:grid-cols-3 gap-20 scroll-mt-28">
+            <div class="md:col-span-2 space-y-10 text-justify">
+                <div class="space-y-8">
+                    <h2 class="text-3xl font-bold flex items-center gap-3 text-slate-900 dark:text-white">
+                        <i class="far fa-user text-indigo-600 dark:text-indigo-400"></i> 
+                        About Me
                     </h2>
-                    <p class="leading-relaxed text-slate-600 dark:text-slate-400">
-                        I am an M.S. student in Biomedical Engineering at <a href="https://www.khu.ac.kr/eng/user/main/view.do" target="_blank" class="text-indigo-600 hover:underline font-medium">Kyung Hee University</a>, advised by <a href="https://scholar.google.com/citations?user=mOUp-FUAAAAJ&hl=en" target="_blank" class="text-indigo-600 hover:underline font-medium">Prof. Ki Joo Pahk</a>. 
-                        My research focuses on advancing non-invasive therapeutic ultrasound, with a particular emphasis on optimizing pre-treatment algorithms for boiling histotripsy. I am currently developing high-precision focus prediction models to improve the targeting accuracy of therapeutic ultrasound. I am also interested in leveraging deep learning for medical imaging and in developing robust methods for real-time monitoring of acoustic cavitation.
+                    <p class="leading-relaxed text-slate-600 dark:text-slate-400 text-lg">
+                        I am an M.S. student in Biomedical Engineering at <a href="https://www.khu.ac.kr/eng/user/main/view.do" target="_blank" class="text-indigo-600 hover:underline font-medium decoration-2">Kyung Hee University</a>, advised by <a href="https://scholar.google.com/citations?user=mOUp-FUAAAAJ&hl=en" target="_blank" class="text-indigo-600 hover:underline font-medium decoration-2">Prof. Ki Joo Pahk</a>.
+                        My research focuses on advancing non-invasive therapeutic ultrasound, specifically optimizing pre-treatment algorithms for boiling histotripsy.
+                        I am developing high-precision focus prediction models using deep learning to enhance medical imaging and monitor acoustic cavitation.
                     </p>
-                    <!-- <p class="leading-relaxed text-slate-600 dark:text-slate-400">
-                        Currently, I develop high-precision focus prediction models to improve the treatment accuracy of therapeutic ultrasound. 
-                        I am also deeply interested in leveraging deep learning for medical imaging and developing robust methods for the real-time monitoring of acoustic cavitation.
-                    </p> -->
                 </div>
-        
-                <div class="pt-4 border-t border-slate-100 dark:border-slate-800">
-                    <p class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] mb-4">Research Interest</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-100/60 text-slate-600 dark:bg-slate-800/60 dark:text-slate-300 border border-slate-200/50 dark:border-slate-700/50 rounded-full text-xs font-medium transition hover:border-indigo-400 cursor-default">Ultrasound imaging</span>
-                        <span class="px-3 py-1 bg-slate-100/60 text-slate-600 dark:bg-slate-800/60 dark:text-slate-300 border border-slate-200/50 dark:border-slate-700/50 rounded-full text-xs font-medium transition hover:border-indigo-400 cursor-default">Deep learning</span>
-                        <span class="px-3 py-1 bg-slate-100/60 text-slate-600 dark:bg-slate-800/60 dark:text-slate-300 border border-slate-200/50 dark:border-slate-700/50 rounded-full text-xs font-medium transition hover:border-indigo-400 cursor-default">Boiling histotripsy</span>
-                        <span class="px-3 py-1 bg-slate-100/60 text-slate-600 dark:bg-slate-800/60 dark:text-slate-300 border border-slate-200/50 dark:border-slate-700/50 rounded-full text-xs font-medium transition hover:border-indigo-400 cursor-default">Pressure-modulated shockwave histotripsy</span>
+                
+                <div class="pt-8 border-t border-slate-200 dark:border-slate-800">
+                    <p class="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.25em] mb-6">Research Domains</p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-5 py-2 bg-slate-100/80 text-slate-600 dark:bg-slate-800/80 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-semibold hover:border-indigo-400 transition-colors cursor-default">Ultrasound Imaging</span>
+                        <span class="px-5 py-2 bg-slate-100/80 text-slate-600 dark:bg-slate-800/80 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-semibold hover:border-indigo-400 transition-colors cursor-default">Deep Learning</span>
+                        <span class="px-5 py-2 bg-slate-100/80 text-slate-600 dark:bg-slate-800/80 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-semibold hover:border-indigo-400 transition-colors cursor-default">Boiling Histotripsy</span>
+                        <span class="px-5 py-2 bg-slate-100/80 text-slate-600 dark:bg-slate-800/80 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-semibold hover:border-indigo-400 transition-colors cursor-default">Cavitation Monitoring</span>
                     </div>
                 </div>
             </div>
-            
-            <div class="space-y-6">
-                <h2 class="text-xl font-bold flex items-center gap-2 text-slate-900 dark:text-white">
-                    <i class="fas fa-graduation-cap text-indigo-600 dark:text-indigo-400"></i> Education
+
+            <div class="space-y-10">
+                <h2 class="text-3xl font-bold flex items-center gap-3 text-slate-900 dark:text-white">
+                    <i class="fas fa-graduation-cap text-indigo-600 dark:text-indigo-400"></i> 
+                    Education
                 </h2>
-                <div class="space-y-8 relative border-l-2 border-slate-100 dark:border-slate-800 pl-6 ml-2">
-                    
+                <div class="space-y-12 relative border-l-2 border-slate-200 dark:border-slate-800 ml-4 pl-10 py-3">
                     <div class="relative">
-                        <span class="absolute -left-8 top-1 w-4 h-4 bg-indigo-600 rounded-full border-4 border-white dark:border-[#0f172a]"></span>
-                        <p class="font-bold text-base text-slate-900 dark:text-white">M.S. in Biomedical Engineering</p>
-                        <p class="text-sm text-slate-600 dark:text-slate-400">Kyung Hee University, Republic of Korea</p>
-                        <p class="text-xs font-semibold text-slate-400 mt-1 uppercase tracking-wider">2024 - Present</p>
+                        <span class="absolute -left-[50px] top-1.5 w-5 h-5 bg-indigo-600 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
+                        <p class="font-bold text-lg text-slate-900 dark:text-white">M.S. in Biomedical Engineering</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 font-medium">Kyung Hee University, KR</p>
+                        <p class="text-[11px] font-bold text-indigo-500 mt-2 uppercase tracking-widest">2024 — Present</p>
                     </div>
-            
                     <div class="relative">
-                        <span class="absolute -left-8 top-1 w-4 h-4 bg-slate-300 dark:bg-slate-600 rounded-full border-4 border-white dark:border-[#0f172a]"></span>
-                        <p class="font-bold text-base text-slate-900 dark:text-white">B.S. in Biomedical Engineering</p>
-                        <p class="text-sm text-slate-600 dark:text-slate-400">Kyung Hee University, Republic of Korea</p>
-                        <p class="text-xs font-semibold text-slate-400 mt-1 uppercase tracking-wider">2020 - 2024</p>
+                        <span class="absolute -left-[50px] top-1.5 w-5 h-5 bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-[#fdfcf8] dark:border-[#0f172a]"></span>
+                        <p class="font-bold text-lg text-slate-900 dark:text-white">B.S. in Biomedical Engineering</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 font-medium">Kyung Hee University, KR</p>
+                        <p class="text-[11px] font-bold text-slate-400 mt-2 uppercase tracking-widest">2020 — 2024</p>
                     </div>
-            
                 </div>
             </div>
         </section>
 
-
-        <!-- <section id="experience" class="space-y-8 scroll-mt-24">
-            <h2 class="text-xl font-bold flex items-center gap-2 text-slate-900 dark:text-white">
-                <i class="fas fa-microscope"></i> Research Experience
-            </h2>
-            
-            <div class="border-l-2 border-slate-100 dark:border-slate-800 ml-3 pl-8 space-y-10 relative">
-                <div class="mb-6">
-                    <h3 class="font-bold text-lg text-slate-900 dark:text-white">Biomedical Ultrasound Engineering Laboratory</h3>
-                    <p class="text-sm text-slate-500 dark:text-slate-400">Kyung Hee University, Republic of Korea</p>
-                </div>
-        
-                <div class="relative">
-                    <span class="absolute -left-[37px] top-1.5 w-3 h-3 bg-indigo-600 rounded-full border-2 border-white dark:border-[#0f172a]"></span>
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-                        <p class="font-semibold text-slate-800 dark:text-slate-200">M.S. Candidate</p>
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Sept 2024 - Present</span>
-                    </div>
-                </div>
-        
-                <div class="relative">
-                    <span class="absolute -left-[37px] top-1.5 w-3 h-3 bg-slate-300 dark:bg-slate-600 rounded-full border-2 border-white dark:border-[#0f172a]"></span>
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-                        <p class="font-semibold text-slate-800 dark:text-slate-200 text-sm">Undergraduate Researcher</p>
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">May 2022 - Aug 2024</span>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-
-        <section id="news" class="space-y-6 scroll-mt-24">
+        <section id="news" class="space-y-10 scroll-mt-28">
             <div class="flex justify-between items-end">
-                <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-4">
                     <i class="far fa-newspaper text-indigo-600 dark:text-indigo-400"></i> 
                     Latest News
-                    <span class="ml-1 w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
+                    <span class="flex h-3.5 w-3.5">
+                        <span class="animate-ping absolute h-3.5 w-3.5 rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative rounded-full h-3.5 w-3.5 bg-green-500"></span>
+                    </span>
                 </h2>
-                <a href="news/archive.html" class="text-sm font-bold text-indigo-600 hover:underline flex items-center gap-1">View All News →</a>
+                <a 
+                    href="news/archive.html" 
+                    class="text-sm font-bold text-indigo-600 hover:underline flex items-center gap-2 transition-all hover:gap-3"
+                >
+                    The Research Odyssey →
+                </a>
             </div>
-            <div id="news-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div 
+                id="news-container" 
+                class="grid grid-cols-1 md:grid-cols-3 gap-10"
+            >
                 </div>
         </section>
 
-        
-        
-        <section id="publications" class="space-y-6 scroll-mt-24">
-            <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <i class="far fa-file-alt text-indigo-600 dark:text-indigo-400"></i> Publications & Patents
+        <section id="publications" class="space-y-10 scroll-mt-28 pb-20">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-4">
+                <i class="far fa-file-alt text-indigo-600 dark:text-indigo-400"></i> 
+                Publications & Patents
             </h2>
-        
-            <!-- Publications 리스트 -->
-            <div class="space-y-4">
-                <div class="bento-card flex flex-col md:flex-row md:items-baseline md:justify-between gap-3">
-                    <div>
-                        <p class="text-xs font-semibold uppercase tracking-widest text-indigo-500 mb-1">
-                            Manuscript in preparation
-                        </p>
-                        <p class="text-sm text-slate-700 dark:text-slate-200">
-                            Mahmood MR, Seok MW, Pahk KJ et al.,
-                            <span class="italic">"Deep learning-based prediction of boiling histotripsy focus using B-mode ultrasound: A proof-of-concept study,"</span>
-                            manuscript in preparation, 2026.
-                        </p>
+            
+            <div class="space-y-6">
+                <div class="bento-card border-l-4 border-l-indigo-500 group/pub">
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+                        <div class="space-y-3">
+                            <p class="text-[11px] font-bold uppercase tracking-[0.25em] text-indigo-500">Manuscript in Preparation</p>
+                            <p class="text-lg text-slate-700 dark:text-slate-200 leading-snug font-medium">
+                                Mahmood MR, Seok MW, Pahk KJ et al.,
+                            </p>
+                            <p class="text-base text-slate-500 dark:text-slate-400 italic">
+                                "Deep learning-based prediction of boiling histotripsy focus using B-mode ultrasound: A proof-of-concept study," 2026.
+                            </p>
+                        </div>
+                        <span class="bg-slate-100 dark:bg-slate-800 px-4 py-1.5 rounded-lg text-xs font-bold text-slate-500 tracking-widest self-start md:self-auto">2026</span>
                     </div>
-                    <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-widest">
-                        2026
-                    </span>
                 </div>
             </div>
-        
-            <!-- 아직 정식 출판물이 없는 상태라는 안내 박스 -->
-            <div class="w-full py-10 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl flex flex-col items-center justify-center text-slate-400 mt-4">
-                <i class="fas fa-pen-nib text-2xl mb-3 opacity-50"></i>
-                <p class="text-sm px-6 text-center">
-                    Additional manuscripts and patent applications based on recent research activities are currently under preparation.
+
+            <div class="w-full py-16 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-3xl flex flex-col items-center justify-center text-slate-400 mt-10 bg-slate-50/30 dark:bg-transparent">
+                <i class="fas fa-pen-nib text-4xl mb-6 opacity-30"></i>
+                <p class="text-base px-12 text-center max-w-2xl leading-relaxed">
+                    Additional manuscripts regarding real-time cavitation energy monitoring and hardware-optimized prediction models are currently under peer preparation.
                 </p>
             </div>
         </section>
 
-
-
-
-        
     </main>
 
-    <footer class="bg-[#1e293b] text-slate-300 py-10 mt-20">
-        <div class="max-w-6xl mx-auto px-6 text-sm text-left">
-            <p>Copyright © 2026 Muhammad Rafay Mahmood. All rights reserved. | Built with passion.</p>
+    <footer class="bg-slate-900 text-slate-500 py-16 mt-auto">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10">
+            <div class="space-y-2 text-center md:text-left">
+                <p class="text-white font-semibold">Muhammad Rafay Mahmood</p>
+                <p class="text-sm">Copyright © 2026. All rights reserved.</p>
+            </div>
+            <div class="flex gap-10 text-sm font-medium">
+                <a href="/contact/" class="hover:text-white transition-colors">Contact</a>
+                <a href="news/archive.html" class="hover:text-white transition-colors">Odyssey Archive</a>
+                <a href="/#about" class="hover:text-white transition-colors">Back to Top</a>
+            </div>
         </div>
     </footer>
 
-    <a href="#" class="fixed bottom-8 right-8 z-50 flex flex-col items-center gap-1 text-slate-400 hover:text-indigo-600 transition-all duration-300 group">
-        <span class="text-2xl group-hover:-translate-y-1 transition-transform">↑</span>
-        <span class="text-[10px] font-bold tracking-widest uppercase">TOP</span>
-    </a>
-
     <script>
-        const themeBtn = document.getElementById('theme-btn');
-        const lightContent = document.getElementById('light-icon-content');
-        const darkContent = document.getElementById('dark-icon-content');
-
-        function updateThemeUI() {
-            if (document.documentElement.classList.contains('dark')) {
-                lightContent.classList.add('hidden');
-                darkContent.classList.remove('hidden');
-            } else {
-                darkContent.classList.add('hidden');
-                lightContent.classList.remove('hidden');
-            }
-        }
-        updateThemeUI();
-
-        themeBtn.addEventListener('click', function() {
-            document.documentElement.classList.toggle('dark');
-            localStorage.setItem('color-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-            updateThemeUI();
-        });
-
-        async function updateNews() {
-            try {
-                const response = await fetch('./news/archive.html');
-                const html = await response.text();
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                const items = doc.querySelectorAll('.relative.pl-8');
-                const container = document.getElementById('news-container');
-                container.innerHTML = '';
-                for (let i = 0; i < Math.min(items.length, 3); i++) {
-                    const date = items[i].querySelector('p.text-xs').innerText;
-                    const title = items[i].querySelector('h3').innerText;
-                    const content = items[i].querySelector('p.text-slate-600').innerText;
-                    container.innerHTML += `
-                        <div class="bento-card">
-                            <p class="text-xs font-bold text-slate-400 mb-2"><i class="far fa-calendar-alt text-indigo-600 dark:text-indigo-400"></i> ${date}</p>
-                            <h3 class="font-bold mb-2 text-slate-900 dark:text-white">${title}</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">${content}</p>
-                        </div>`;
-                }
-            } catch (error) { console.error('News load error'); }
-        }
-        updateNews();
-
-        function copyEmailToClipboard() {
-            const email = "mrafaym@khu.ac.kr";
-            navigator.clipboard.writeText(email).then(() => {
-                const tooltip = document.getElementById('copy-tooltip');
-                // 툴팁 표시
-                tooltip.classList.remove('opacity-0');
-                tooltip.classList.add('opacity-100');
-                
-                // 1.5초 후 툴팁 숨김
-                setTimeout(() => {
-                    tooltip.classList.remove('opacity-100');
-                    tooltip.classList.add('opacity-0');
-                }, 1500);
-            });
-        }
-
+        /**
+         * 1. Mobile Hamburger Toggle Logic
+         */
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             const icon = document.getElementById('menu-icon');
             
-            // 메뉴 열기/닫기 토글
             menu.classList.toggle('hidden');
             
-            // 아이콘 모양 변경 (삼선 <-> X표시)
             if (menu.classList.contains('hidden')) {
                 icon.classList.replace('fa-times', 'fa-bars');
             } else {
                 icon.classList.replace('fa-bars', 'fa-times');
             }
+        }
+
+        /**
+         * 2. Dual-Button Theme Controller
+         */
+        const handleThemeSwitch = () => {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+        };
+        
+        document.getElementById('theme-btn-desktop').onclick = handleThemeSwitch;
+        document.getElementById('theme-btn-mobile').onclick = handleThemeSwitch;
+
+        /**
+         * 3. Dynamic News Downloader (Justified Content)
+         * archive.html에서 최신 뉴스 3개를 긁어와 양쪽 맞춤 정렬로 주입합니다.
+         */
+        async function updateNews() {
+            try {
+                // news/archive.html 경로에서 데이터 로드
+                const response = await fetch('news/archive.html');
+                const htmlText = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(htmlText, 'text/html');
+                const items = doc.querySelectorAll('.odyssey-item');
+                const container = document.getElementById('news-container');
+                
+                container.innerHTML = '';
+                
+                // 상위 3개 항목만 처리
+                for (let i = 0; i < Math.min(items.length, 3); i++) {
+                    const rawDate = items[i].querySelector('p').innerText;
+                    const rawTitle = items[i].querySelector('h3').innerText;
+                    const rawContent = items[i].querySelector('p:last-of-type').innerText;
+                    
+                    container.innerHTML += `
+                        <div class="bento-card flex flex-col justify-between h-full">
+                            <div>
+                                <p class="text-[10px] font-bold text-indigo-500 mb-4 uppercase tracking-[0.2em] border-b border-indigo-100 dark:border-indigo-900/50 pb-2">${rawDate}</p>
+                                <h3 class="font-bold mb-4 text-slate-900 dark:text-white text-lg leading-tight">${rawTitle}</h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed text-justify line-clamp-5">${rawContent}</p>
+                            </div>
+                        </div>`;
+                }
+            } catch (err) { 
+                console.warn('Latest news container empty or offline.');
+                document.getElementById('news-container').innerHTML = "<p class='text-sm text-slate-400 italic'>Loading Research Odyssey...</p>";
+            }
+        }
+        updateNews();
+
+        /**
+         * 4. Clipboard Service
+         */
+        function copyEmailToClipboard() {
+            const email = "mrafaym@khu.ac.kr";
+            navigator.clipboard.writeText(email).then(() => {
+                const tooltip = document.getElementById('copy-tooltip');
+                tooltip.classList.remove('opacity-0');
+                tooltip.classList.add('opacity-100');
+                setTimeout(() => {
+                    tooltip.classList.remove('opacity-100');
+                    tooltip.classList.add('opacity-0');
+                }, 1800);
+            });
         }
     </script>
 </body>
