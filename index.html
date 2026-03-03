@@ -355,6 +355,21 @@
                 }, 1500);
             });
         }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            
+            // 메뉴 열기/닫기 토글
+            menu.classList.toggle('hidden');
+            
+            // 아이콘 모양 변경 (삼선 <-> X표시)
+            if (menu.classList.contains('hidden')) {
+                icon.classList.replace('fa-times', 'fa-bars');
+            } else {
+                icon.classList.replace('fa-bars', 'fa-times');
+            }
+        }
     </script>
 </body>
 </html>
