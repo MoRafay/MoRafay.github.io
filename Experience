@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience | Muhammad Rafay Mahmood</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+    <script>
+        if (localStorage.getItem('color-theme') === 'dark' || 
+            (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { indigo: { 350: '#A5B4FC', 400: '#818CF8', 600: '#4F46E5' } } } } }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; } 
+        .bg-custom-light { background-color: #fdfcf8; }
+        .dark .bg-custom-light { background-color: #0f172a; }        
+        .bento-card { background: white; border-radius: 12px; border: 1px solid #e5e7eb; padding: 2rem; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .dark .bento-card { background: #1e293b; border-color: #334155; }
+        .bento-card:hover { transform: translateY(-3px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+    </style>
+</head>
+
+<body class="bg-custom-light text-slate-800 dark:text-slate-200 min-h-screen flex flex-col">
+
+    <nav class="max-w-6xl mx-auto px-6 py-6 w-full flex justify-between items-center sticky top-0 bg-custom-light/90 dark:bg-[#0f172a]/90 backdrop-blur-md z-50 border-b border-slate-200/50 dark:border-slate-800/50">
+        <a href="/" class="text-xl font-bold text-slate-900 dark:text-white tracking-tighter hover:text-indigo-600 transition-colors">
+            Muhammad Rafay Mahmood
+        </a>
+        <div class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-600 dark:text-slate-400">
+            <a href="/#about" class="hover:text-indigo-600 transition-colors">Home</a>
+            <a href="news/archive.html" class="hover:text-indigo-600 transition-colors">News</a>
+            <a href="experience.html" class="text-indigo-600 dark:text-indigo-400">Experience</a>
+            <a href="/#publications" class="hover:text-indigo-600 transition-colors">Publications</a>
+            <a href="projects.html" class="hover:text-indigo-600 transition-colors">Projects</a>
+            <a href="/assets/files/cv.pdf" target="_blank" class="hover:text-indigo-600 transition-colors">CV</a>
+            <a href="awards.html" class="hover:text-indigo-600 transition-colors">Awards</a>
+            <a href="/contact/" class="hover:text-indigo-600 transition-colors">Contact</a>
+            
+            <button id="theme-btn-desktop" class="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none">
+                <i class="fas fa-sun text-lg text-amber-500 dark:hidden"></i>
+                <i class="fas fa-moon text-lg text-slate-400 hidden dark:block"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-6 py-20 w-full flex-grow space-y-16">
+        
+        <header class="text-center md:text-left space-y-4 border-b border-slate-200 dark:border-slate-800 pb-10">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">Experience</h1>
+            <p class="text-lg text-slate-500 dark:text-slate-400 italic">Professional & Academic Journey.</p>
+        </header>
+
+        <section class="space-y-6">
+            <div class="bento-card flex flex-col md:flex-row gap-8 items-start relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1.5 h-full bg-indigo-600"></div>
+                <div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-900/30 rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-microscope text-2xl text-indigo-600 dark:text-indigo-400"></i>
+                </div>
+                <div class="flex-1 space-y-3 w-full">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
+                        <h3 class="text-2xl font-bold dark:text-white leading-tight">Graduate Researcher</h3>
+                        <span class="inline-flex w-max items-center gap-2 px-3 py-1 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-[10px] font-bold rounded-full uppercase tracking-tighter">
+                            <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> Present
+                        </span>
+                    </div>
+                    <div class="space-y-1">
+                        <p class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm">Biomedical Ultrasound Engineering Lab (BUEL)</p>
+                        <p class="text-slate-500 dark:text-slate-400 font-medium text-sm">Kyung Hee University</p>
+                        <p class="text-slate-400 text-[11px] font-bold uppercase tracking-widest mt-1">Sep 2024 — Present</p>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed pt-2 border-t border-slate-100 dark:border-slate-800/50">
+                        Focusing on advancing non-invasive therapeutic ultrasound. Developing high-precision focus prediction models using deep learning architectures (e.g., SA-UNet, Multi-Task U-Net) to enhance medical imaging and monitor acoustic cavitation in Boiling Histotripsy.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bento-card flex flex-col md:flex-row gap-8 items-start opacity-90 hover:opacity-100">
+                <div class="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center flex-shrink-0 text-slate-400">
+                    <i class="fas fa-laptop-code text-2xl"></i>
+                </div>
+                <div class="flex-1 space-y-3 w-full">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
+                        <h3 class="text-2xl font-bold dark:text-white leading-tight">Undergraduate Researcher</h3>
+                        <span class="inline-flex w-max items-center gap-2 px-3 py-1 bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400 text-[10px] font-bold rounded-full uppercase tracking-tighter">
+                            Completed
+                        </span>
+                    </div>
+                    <div class="space-y-1">
+                        <p class="text-slate-700 dark:text-slate-300 font-semibold text-sm">Biomedical Ultrasound Engineering Lab (BUEL)</p>
+                        <p class="text-slate-500 dark:text-slate-400 font-medium text-sm">Kyung Hee University</p>
+                        <p class="text-slate-400 text-[11px] font-bold uppercase tracking-widest mt-1">May 2022 — Aug 2024</p>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed pt-2 border-t border-slate-100 dark:border-slate-800/50">
+                        Assisted in therapeutic ultrasound research, running laboratory experiments, and managing technical equipment. Conducted data analysis and simulation using MATLAB and Python for initial HIFU and cavitation imaging studies.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-500 py-16 mt-auto">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10">
+            <div class="space-y-2 text-center md:text-left">
+                <p class="text-white font-semibold">Muhammad Rafay Mahmood</p>
+                <p class="text-sm">Copyright © 2026. All rights reserved.</p>
+            </div>
+            <div class="flex gap-10 text-sm font-medium">
+                <a href="/contact/" class="hover:text-white transition-colors">Contact</a>
+                <a href="#" class="hover:text-white transition-colors">Back to Top</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const handleThemeSwitch = () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('color-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        };
+        document.getElementById('theme-btn-desktop').onclick = handleThemeSwitch;
+    </script>
+</body>
+</html>
