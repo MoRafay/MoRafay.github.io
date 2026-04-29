@@ -17,7 +17,6 @@
     <script>
         /**
          * 1. 다크 모드 초기 설정
-         * 사용자의 이전 설정을 로컬 스토리지에서 불러오거나 시스템 설정을 따릅니다.
          */
         if (localStorage.getItem('color-theme') === 'dark' || 
             (!('color-theme' in localStorage) && 
@@ -29,7 +28,6 @@
 
         /**
          * 2. Tailwind 커스텀 설정
-         * 디자인의 통일성을 위해 커스텀 인디고 컬러를 정의합니다.
          */
         tailwind.config = {
             darkMode: 'class',
@@ -62,7 +60,6 @@
             transition: background-color 0.3s ease, color 0.3s ease; 
         } 
         
-        /* 메인 페이지 배경색 설정 */
         .bg-custom-light { 
             background-color: #fdfcf8; 
         }
@@ -71,10 +68,6 @@
             background-color: #0f172a; 
         }        
         
-        /**
-         * 4. 벤토 카드 디자인
-         * 모든 카드 섹션에 통일된 디자인을 적용합니다.
-         */
         .bento-card { 
             background: white; 
             border-radius: 12px; 
@@ -93,9 +86,6 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); 
         }
 
-        /**
-         * 5. 모바일 메뉴 애니메이션
-         */
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -126,14 +116,6 @@
             <a href="projects.html" class="hover:text-indigo-600 transition-colors">Projects</a>
             <a href="awards.html" class="hover:text-indigo-600 transition-colors">Awards</a>
             <a href="/contact/" class="hover:text-indigo-600 transition-colors">Contact</a>
-            
-            <a 
-                href="/assets/files/cv.pdf" 
-                target="_blank"
-                class="ml-2 px-4 py-2 bg-slate-900 text-white dark:bg-white dark:text-slate-900 rounded-lg hover:bg-indigo-600 dark:hover:bg-indigo-500 hover:text-white dark:hover:text-white transition-all shadow-sm"
-            >
-                <i class="fas fa-download mr-1.5"></i> CV
-            </a>
             
             <button 
                 id="theme-btn-desktop" 
@@ -170,7 +152,6 @@
             <a href="experience.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Experience</a>
             <a href="/#publications" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Publications</a>
             <a href="projects.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Projects</a>
-            <a href="/assets/files/cv.pdf" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Download CV</a>
             <a href="awards.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Awards</a>
             <a href="/contact/" onclick="toggleMobileMenu()" class="pt-6 border-t border-slate-100 dark:border-slate-800 hover:text-indigo-600">Contact Info</a>
         </div>
@@ -208,7 +189,6 @@
                 <div class="absolute inset-0 rounded-full border-4 border-indigo-400 pointer-events-none z-20"></div>
             </div>
 
-            
             <div class="flex-1 text-center md:text-left space-y-3">
                 <h1 class="text-3xl md:text-5xl xl:whitespace-nowrap font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
                     Muhammad Rafay Mahmood
@@ -225,16 +205,22 @@
 
         <section id="about" class="grid grid-cols-1 md:grid-cols-3 gap-20 scroll-mt-28">
             <div class="md:col-span-2 space-y-10 text-justify">
-                <div class="space-y-8">
-                    <h2 class="text-3xl font-bold flex items-center gap-3 text-slate-900 dark:text-white">
+                <div class="space-y-6">
+                    <h2 class="text-3xl font-bold flex items-center gap-3 text-slate-900 dark:text-white mb-2">
                         <i class="far fa-user text-indigo-600 dark:text-indigo-400"></i> 
                         About Me
                     </h2>
                     <p class="leading-relaxed text-slate-600 dark:text-slate-400 text-lg">
-                        I am an M.S. student in Biomedical Engineering at <a href="https://www.khu.ac.kr/eng/user/main/view.do" target="_blank" class="text-indigo-600 hover:underline font-medium decoration-2">Kyung Hee University</a>, South Korea,  under the supervision of Professor <a href="https://scholar.google.com/citations?user=mOUp-FUAAAAJ&hl=en" target="_blank" class="text-indigo-600 hover:underline font-medium decoration-2"> Ki Joo Pahk</a>.
+                        I am an M.S. student in Biomedical Engineering at <a href="https://www.khu.ac.kr/eng/user/main/view.do" target="_blank" class="text-indigo-600 hover:underline font-medium decoration-2">Kyung Hee University</a>, South Korea, under the supervision of Professor <a href="https://scholar.google.com/citations?user=mOUp-FUAAAAJ&hl=en" target="_blank" class="text-indigo-600 hover:underline font-medium decoration-2"> Ki Joo Pahk</a>.
                         My research focuses on advancing non-invasive therapeutic ultrasound, specifically optimizing pre-treatment algorithms for boiling histotripsy.
                         I am developing high-precision focus prediction models using deep learning to enhance medical imaging and monitor acoustic cavitation.
                     </p>
+                    
+                    <div class="pt-2">
+                        <a href="/assets/files/cv.pdf" target="_blank" class="text-lg text-slate-600 dark:text-slate-400 font-medium underline decoration-indigo-600 decoration-2 underline-offset-8 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+                            Download my CV
+                        </a>
+                    </div>
                 </div>
                 
                 <div class="pt-8 border-t border-slate-200 dark:border-slate-800">
@@ -288,11 +274,7 @@
                 </a>
             </div>
             
-            <div 
-                id="news-container" 
-                class="grid grid-cols-1 md:grid-cols-3 gap-10"
-            >
-                </div>
+            <div id="news-container" class="grid grid-cols-1 md:grid-cols-3 gap-10"></div>
         </section>
 
         <section id="publications" class="space-y-10 scroll-mt-28 pb-20">
@@ -346,15 +328,10 @@
     </footer>
 
     <script>
-        /**
-         * 1. Mobile Hamburger Toggle Logic
-         */
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             const icon = document.getElementById('menu-icon');
-            
             menu.classList.toggle('hidden');
-            
             if (menu.classList.contains('hidden')) {
                 icon.classList.replace('fa-times', 'fa-bars');
             } else {
@@ -362,40 +339,27 @@
             }
         }
 
-        /**
-         * 2. Dual-Button Theme Controller
-         */
         const handleThemeSwitch = () => {
             document.documentElement.classList.toggle('dark');
             const isDark = document.documentElement.classList.contains('dark');
             localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
         };
-        
         document.getElementById('theme-btn-desktop').onclick = handleThemeSwitch;
         document.getElementById('theme-btn-mobile').onclick = handleThemeSwitch;
 
-        /**
-         * 3. Dynamic News Downloader (Justified Content)
-         * archive.html에서 최신 뉴스 3개를 긁어와 양쪽 맞춤 정렬로 주입합니다.
-         */
         async function updateNews() {
             try {
-                // news/archive.html 경로에서 데이터 로드
                 const response = await fetch('news/archive.html');
                 const htmlText = await response.text();
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(htmlText, 'text/html');
                 const items = doc.querySelectorAll('.odyssey-item');
                 const container = document.getElementById('news-container');
-                
                 container.innerHTML = '';
-                
-                // 상위 3개 항목만 처리
                 for (let i = 0; i < Math.min(items.length, 3); i++) {
                     const rawDate = items[i].querySelector('p').innerText;
                     const rawTitle = items[i].querySelector('h3').innerText;
                     const rawContent = items[i].querySelector('p:last-of-type').innerText;
-                    
                     container.innerHTML += `
                         <div class="bento-card flex flex-col justify-between h-full">
                             <div>
@@ -406,15 +370,11 @@
                         </div>`;
                 }
             } catch (err) { 
-                console.warn('Latest news container empty or offline.');
                 document.getElementById('news-container').innerHTML = "<p class='text-sm text-slate-400 italic'>Loading Research Odyssey...</p>";
             }
         }
         updateNews();
 
-        /**
-         * 4. Clipboard Service
-         */
         function copyEmailToClipboard() {
             const email = "mrafaym@khu.ac.kr";
             navigator.clipboard.writeText(email).then(() => {
