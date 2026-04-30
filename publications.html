@@ -101,12 +101,10 @@
                 <div class="bento-card group flex flex-col sm:flex-row justify-between items-start gap-4" onclick="openPatentModal('us-patent')">
                     <div>
                         <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-indigo-500 mb-2">Intl. Patent Application (US)</p>
-                        <!-- 제목을 하나로 통일 -->
                         <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2 leading-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Real-time prediction system and method for histotripsy treatment location</h3>
                         <p class="text-sm text-slate-500 dark:text-slate-400">Pahk KJ, Mahmood MR, Won SM, Kim SH</p>
                     </div>
                     <div class="flex flex-col items-end gap-2 shrink-0">
-                        <!-- 뱃지를 PENDING으로 통일하고 색상 부여 -->
                         <span class="bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Pending</span>
                         <span class="text-xs font-bold text-slate-400 tracking-widest">MAR 2025</span>
                     </div>
@@ -116,12 +114,10 @@
                 <div class="bento-card group flex flex-col sm:flex-row justify-between items-start gap-4" onclick="openPatentModal('kr-patent')">
                     <div>
                         <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 mb-2">Domestic Patent Application (KR)</p>
-                        <!-- 제목을 하나로 통일 -->
                         <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2 leading-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Real-time prediction system and method for histotripsy treatment location</h3>
                         <p class="text-sm text-slate-500 dark:text-slate-400">Pahk KJ, Mahmood MR, Won SM, Kim SH</p>
                     </div>
                     <div class="flex flex-col items-end gap-2 shrink-0">
-                        <!-- 뱃지를 PENDING으로 통일하고 색상 부여 -->
                         <span class="bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Pending</span>
                         <span class="text-xs font-bold text-slate-400 tracking-widest">FEB 2025</span>
                     </div>
@@ -177,14 +173,13 @@
         }
         updateThemeUI();
 
-        // 특허 데이터 (설명과 제목 완벽히 통일)
+        // 특허 데이터 (출원 번호 appNo 삭제)
         const patentData = {
             'us-patent': {
                 type: "International Patent Application (US)",
                 title: "Real-time prediction system and method for histotripsy treatment location",
                 inventors: "Ki Joo Pahk, Muhammad Rafay Mahmood, Seok-min Won, Seong-hyun Kim",
                 date: "Mar 12, 2025",
-                appNo: "KR 10-2025-0032161 (Priority Claimed)",
                 status: "Pending",
                 statusColor: "text-indigo-500 dark:text-indigo-400",
                 desc: "This technology utilizes an AI model to predict and display the histotripsy focal point in real-time within an ultrasound imaging environment prior to treatment. It accounts for changes in the relative position and distance between the focused ultrasound transducer and the patient's skin surface, addressing the limitations of existing pre-treatment prediction methods."
@@ -192,9 +187,9 @@
             'kr-patent': {
                 type: "Domestic Patent Application (KR)",
                 title: "Real-time prediction system and method for histotripsy treatment location",
+                titleKr: "히스토트립시 치료 위치 실시간 예측 방법",
                 inventors: "Ki Joo Pahk, Muhammad Rafay Mahmood, Seok-min Won, Seong-hyun Kim",
                 date: "Feb 11, 2025",
-                appNo: "10-2025-0032161",
                 status: "Pending",
                 statusColor: "text-indigo-500 dark:text-indigo-400",
                 desc: "This technology utilizes an AI model to predict and display the histotripsy focal point in real-time within an ultrasound imaging environment prior to treatment. It accounts for changes in the relative position and distance between the focused ultrasound transducer and the patient's skin surface, addressing the limitations of existing pre-treatment prediction methods."
@@ -207,14 +202,16 @@
         function openPatentModal(id) {
             const data = patentData[id];
 
+            const krTitleHtml = data.titleKr ? `<h3 class="text-base sm:text-lg font-medium text-slate-500 dark:text-slate-400 mt-2 mb-6 pr-8 break-keep">${data.titleKr}</h3>` : `<div class="mb-6"></div>`;
+
             document.getElementById('modal-content').innerHTML = `
                 <p class="text-indigo-600 dark:text-indigo-400 font-bold text-[10px] uppercase tracking-widest mb-2">${data.type}</p>
-                <h2 class="text-2xl sm:text-3xl font-bold mb-6 dark:text-white leading-tight pr-8">${data.title}</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold dark:text-white leading-tight pr-8">${data.title}</h2>
+                ${krTitleHtml}
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-4 text-sm border-y border-slate-100 dark:border-slate-800 py-6 mb-8 bg-slate-50/50 dark:bg-slate-900/50 rounded-xl px-4">
                     <div><p class="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-1">Status</p><p class="${data.statusColor} font-bold">${data.status}</p></div>
                     <div><p class="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-1">Date</p><p class="font-medium dark:text-slate-200">${data.date}</p></div>
-                    <div class="sm:col-span-2"><p class="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-1">Application / Priority No.</p><p class="font-medium dark:text-slate-200">${data.appNo}</p></div>
                     <div class="sm:col-span-2"><p class="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-1">Inventors</p><p class="font-medium dark:text-slate-200">${data.inventors}</p></div>
                 </div>
                 
