@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publications | Muhammad Rafay Mahmood</title>
+    <title>Publications & Patents | Muhammad Rafay Mahmood</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
@@ -21,9 +21,14 @@
         body { font-family: 'Inter', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; } 
         .bg-custom-light { background-color: #fdfcf8; }
         .dark .bg-custom-light { background-color: #0f172a; }        
-        .bento-card { background: white; border-radius: 12px; border: 1px solid #e5e7eb; padding: 2rem; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .bento-card { background: white; border-radius: 12px; border: 1px solid #e5e7eb; padding: 2rem; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
         .dark .bento-card { background: #1e293b; border-color: #334155; }
-        .bento-card:hover { transform: translateY(-3px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        .bento-card:hover { transform: translateY(-3px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); border-color: #818CF8; }
+        
+        /* 논문용 카드는 hover 시 테두리 색상 변경 제외 (클릭 이벤트 없음) */
+        .pub-card { cursor: default; }
+        .pub-card:hover { border-color: #e5e7eb; }
+        .dark .pub-card:hover { border-color: #334155; }
     </style>
 </head>
 
@@ -41,7 +46,8 @@
         </a>
     </div>
 
-    <main class="max-w-4xl mx-auto px-6 py-10 w-full flex-grow space-y-16">
+    <main class="max-w-4xl mx-auto px-6 py-10 w-full flex-grow space-y-24">
+        
         <header class="mb-12 border-b border-slate-200 dark:border-slate-800 pb-10 text-center md:text-left">
             <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">Publications & Patents</h1>
             <p class="text-slate-500 dark:text-slate-400 italic text-lg leading-relaxed">
@@ -49,33 +55,83 @@
             </p>
         </header>
 
-        <section class="space-y-6">
+        <!-- Section 1: Publications -->
+        <section>
+            <h2 class="text-2xl font-bold mb-8 dark:text-white flex items-center gap-3">
+                <i class="far fa-file-alt text-indigo-500"></i> Publications
+            </h2>
             
-            <!-- 논문 카드 -->
-            <div class="bento-card border-l-4 border-l-indigo-500 group/pub">
-                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-                    <div class="space-y-3">
-                        <p class="text-[11px] font-bold uppercase tracking-[0.25em] text-indigo-500">Manuscript in Preparation</p>
-                        <p class="text-lg text-slate-900 dark:text-white leading-snug font-bold">
-                            Mahmood MR, Seok MW, Pahk KJ et al.,
-                        </p>
-                        <p class="text-base text-slate-600 dark:text-slate-300 italic">
-                            "Deep learning-based prediction of boiling histotripsy focus using B-mode ultrasound: A proof-of-concept study," 2026.
-                        </p>
+            <div class="space-y-6">
+                <!-- 논문 카드 -->
+                <div class="bento-card pub-card border-l-4 border-l-indigo-500">
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+                        <div class="space-y-3">
+                            <p class="text-[11px] font-bold uppercase tracking-[0.25em] text-indigo-500">Manuscript in Preparation</p>
+                            <p class="text-lg text-slate-900 dark:text-white leading-snug font-bold">
+                                Mahmood MR, Seok MW, Pahk KJ et al.,
+                            </p>
+                            <p class="text-base text-slate-600 dark:text-slate-300 italic">
+                                "Deep learning-based prediction of boiling histotripsy focus using B-mode ultrasound: A proof-of-concept study," 2026.
+                            </p>
+                        </div>
+                        <span class="bg-slate-100 dark:bg-slate-800 px-4 py-1.5 rounded-lg text-xs font-bold text-slate-500 tracking-widest self-start md:self-auto">2026</span>
                     </div>
-                    <span class="bg-slate-100 dark:bg-slate-800 px-4 py-1.5 rounded-lg text-xs font-bold text-slate-500 tracking-widest self-start md:self-auto">2026</span>
+                </div>
+
+                <!-- 논문용 Coming soon 블록 -->
+                <div class="w-full py-12 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-3xl flex flex-col items-center justify-center text-slate-400 bg-slate-50/30 dark:bg-transparent">
+                    <i class="fas fa-pen-nib text-3xl mb-4 opacity-40"></i>
+                    <p class="text-base font-bold text-slate-500 dark:text-slate-400 mb-1">Coming Soon..!</p>
+                    <p class="text-sm px-12 text-center max-w-lg leading-relaxed opacity-80">
+                        Additional manuscripts are currently under peer preparation.
+                    </p>
                 </div>
             </div>
+        </section>
 
-            <!-- Coming soon 블록 -->
-            <div class="w-full py-20 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-3xl flex flex-col items-center justify-center text-slate-400 mt-10 bg-slate-50/30 dark:bg-transparent">
-                <i class="fas fa-pen-nib text-4xl mb-6 opacity-30"></i>
-                <p class="text-lg font-bold text-slate-500 dark:text-slate-400 mb-2">Coming Soon..!</p>
-                <p class="text-sm px-12 text-center max-w-lg leading-relaxed">
-                    Additional manuscripts are currently under peer preparation.
-                </p>
+        <!-- Section 2: Patents -->
+        <section>
+            <h2 class="text-2xl font-bold mb-8 dark:text-white flex items-center gap-3">
+                <i class="fas fa-file-signature text-indigo-500"></i> Patents
+            </h2>
+            
+            <div class="space-y-6">
+                
+                <!-- 해외 특허 카드 -->
+                <div class="bento-card group flex flex-col sm:flex-row justify-between items-start gap-4" onclick="openPatentModal('us-patent')">
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-indigo-500 mb-2">Intl. Patent Application (US)</p>
+                        <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2 leading-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Histotripsy treatment location real-time prediction system and prediction method</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Pahk KJ, Mahmood MR, Won SM, Kim SH</p>
+                    </div>
+                    <div class="flex flex-col items-end gap-2 shrink-0">
+                        <span class="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Priority Claimed</span>
+                        <span class="text-xs font-bold text-slate-400 tracking-widest">MAR 2025</span>
+                    </div>
+                </div>
+
+                <!-- 국내 특허 카드 -->
+                <div class="bento-card group flex flex-col sm:flex-row justify-between items-start gap-4" onclick="openPatentModal('kr-patent')">
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 mb-2">Domestic Patent Application (KR)</p>
+                        <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2 leading-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Method for predicting the focal point of histotripsy treatment</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Pahk KJ, Mahmood MR, Won SM, Kim SH</p>
+                    </div>
+                    <div class="flex flex-col items-end gap-2 shrink-0">
+                        <span class="bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Filed</span>
+                        <span class="text-xs font-bold text-slate-400 tracking-widest">FEB 2025</span>
+                    </div>
+                </div>
+
+                <!-- 특허용 Coming soon 블록 -->
+                <div class="w-full py-12 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-3xl flex flex-col items-center justify-center text-slate-400 bg-slate-50/30 dark:bg-transparent">
+                    <i class="fas fa-lightbulb text-4xl mb-4 opacity-40"></i>
+                    <p class="text-base font-bold text-slate-500 dark:text-slate-400 mb-1">Coming Soon..!</p>
+                    <p class="text-sm px-12 text-center max-w-lg leading-relaxed opacity-80">
+                        Additional patent applications based on our recent research are currently in progress.
+                    </p>
+                </div>
             </div>
-
         </section>
 
         <footer class="mt-24 pt-10 border-t border-slate-200 dark:border-slate-800 text-center">
@@ -90,6 +146,19 @@
         <span class="text-[10px] font-bold tracking-widest uppercase">TOP</span>
     </a>
 
+    <!-- Patent Modal Background & Container -->
+    <div id="patent-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closePatentModal()"></div>
+        <div class="relative bg-white dark:bg-slate-900 max-w-2xl w-full rounded-3xl p-8 sm:p-10 shadow-2xl overflow-y-auto max-h-[90vh] transform scale-95 transition-transform duration-300 border border-slate-200 dark:border-slate-800" id="modal-inner">
+            <button onclick="closePatentModal()" class="absolute top-6 right-6 w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 dark:hover:text-white transition-colors focus:outline-none">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="modal-content">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
+
     <script>
         const themeBtn = document.getElementById('theme-btn');
         themeBtn.onclick = () => {
@@ -103,6 +172,69 @@
             document.getElementById('dark-icon-content')?.classList.toggle('hidden', !isDark);
         }
         updateThemeUI();
+
+        // 특허 데이터
+        const patentData = {
+            'us-patent': {
+                type: "International Patent Application (US)",
+                title: "Histotripsy treatment location real-time prediction system and prediction method",
+                inventors: "Ki Joo Pahk, Muhammad Rafay Mahmood, Seok-min Won, Seong-hyun Kim",
+                date: "Mar 12, 2025",
+                appNo: "KR 10-2025-0032161 (Priority)",
+                status: "Priority Claimed",
+                statusColor: "text-amber-500",
+                desc: "A real-time prediction system and method for histotripsy treatment locations. It includes a trained AI model that predicts the focal position under specific conditions to output the maximum pressure point. It processes ultrasound image data containing skin surface information to predict the focus in real-time based on variations in skin shape and the relative position/distance to the ultrasound transducer."
+            },
+            'kr-patent': {
+                type: "Domestic Patent Application (KR)",
+                title: "Method for predicting the focal point of histotripsy treatment",
+                inventors: "Ki Joo Pahk, Muhammad Rafay Mahmood, Seok-min Won, Seong-hyun Kim",
+                date: "Feb 11, 2025",
+                appNo: "Pending",
+                status: "Filed",
+                statusColor: "text-indigo-500",
+                desc: "This technology utilizes an AI model to predict and display the histotripsy focal point in real-time within an ultrasound imaging environment prior to treatment. It accounts for changes in the relative position and distance between the focused ultrasound transducer and the patient's skin surface, addressing the limitations of existing pre-treatment prediction methods."
+            }
+        };
+
+        const modal = document.getElementById('patent-modal');
+        const modalInner = document.getElementById('modal-inner');
+
+        function openPatentModal(id) {
+            const data = patentData[id];
+
+            document.getElementById('modal-content').innerHTML = `
+                <p class="text-indigo-600 dark:text-indigo-400 font-bold text-[10px] uppercase tracking-widest mb-2">${data.type}</p>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-6 dark:text-white leading-tight pr-8">${data.title}</h2>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-4 text-sm border-y border-slate-100 dark:border-slate-800 py-6 mb-8 bg-slate-50/50 dark:bg-slate-900/50 rounded-xl px-4">
+                    <div><p class="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-1">Status</p><p class="${data.statusColor} font-bold">${data.status}</p></div>
+                    <div><p class="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-1">Date</p><p class="font-medium dark:text-slate-200">${data.date}</p></div>
+                    <div class="sm:col-span-2"><p class="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-1">Application / Priority No.</p><p class="font-medium dark:text-slate-200">${data.appNo}</p></div>
+                    <div class="sm:col-span-2"><p class="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-1">Inventors</p><p class="font-medium dark:text-slate-200">${data.inventors}</p></div>
+                </div>
+                
+                <div class="space-y-4">
+                    <p class="text-slate-800 dark:text-slate-200 font-bold text-lg">Technology Overview</p>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-justify text-sm">${data.desc}</p>
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+            void modal.offsetWidth;
+            modal.classList.remove('opacity-0');
+            modalInner.classList.remove('scale-95');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePatentModal() {
+            modal.classList.add('opacity-0');
+            modalInner.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
     </script>
 </body>
 </html>
