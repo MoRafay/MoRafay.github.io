@@ -97,28 +97,38 @@
             
             <div class="space-y-6">
                 
-                <!-- 해외 특허 카드 -->
-                <div class="bento-card group flex flex-col sm:flex-row justify-between items-start gap-4" onclick="openPatentModal('us-patent')">
+                <!-- 해외 특허 카드 (시각적 구분: 인디고 테마) -->
+                <div class="bento-card border-l-4 border-l-indigo-500 group flex flex-col sm:flex-row justify-between items-start gap-4" onclick="openPatentModal('us-patent')">
                     <div>
-                        <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-indigo-500 mb-2">Intl. Patent Application (US)</p>
+                        <!-- 시각적 뱃지 디자인 -->
+                        <div class="mb-4">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300 rounded-md text-[10px] font-black uppercase tracking-widest">
+                                <i class="fas fa-globe-americas"></i> International (US)
+                            </span>
+                        </div>
                         <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2 leading-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Real-time prediction system and method for histotripsy treatment location</h3>
                         <p class="text-sm text-slate-500 dark:text-slate-400">Pahk KJ, Mahmood MR, Won SM, Kim SH</p>
                     </div>
-                    <div class="flex flex-col items-end gap-2 shrink-0">
-                        <span class="bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Pending</span>
+                    <div class="flex flex-col items-end gap-2 shrink-0 mt-2 sm:mt-0">
+                        <span class="bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Pending</span>
                         <span class="text-xs font-bold text-slate-400 tracking-widest">MAR 2025</span>
                     </div>
                 </div>
 
-                <!-- 국내 특허 카드 -->
-                <div class="bento-card group flex flex-col sm:flex-row justify-between items-start gap-4" onclick="openPatentModal('kr-patent')">
+                <!-- 국내 특허 카드 (시각적 구분: 에메랄드 테마) -->
+                <div class="bento-card border-l-4 border-l-emerald-500 group flex flex-col sm:flex-row justify-between items-start gap-4" onclick="openPatentModal('kr-patent')">
                     <div>
-                        <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 mb-2">Domestic Patent Application (KR)</p>
-                        <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2 leading-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Real-time prediction system and method for histotripsy treatment location</h3>
+                        <!-- 시각적 뱃지 디자인 -->
+                        <div class="mb-4">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300 rounded-md text-[10px] font-black uppercase tracking-widest">
+                                <i class="fas fa-map-marker-alt"></i> Domestic (KR)
+                            </span>
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2 leading-tight group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Real-time prediction system and method for histotripsy treatment location</h3>
                         <p class="text-sm text-slate-500 dark:text-slate-400">Pahk KJ, Mahmood MR, Won SM, Kim SH</p>
                     </div>
-                    <div class="flex flex-col items-end gap-2 shrink-0">
-                        <span class="bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Pending</span>
+                    <div class="flex flex-col items-end gap-2 shrink-0 mt-2 sm:mt-0">
+                        <span class="bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Pending</span>
                         <span class="text-xs font-bold text-slate-400 tracking-widest">FEB 2025</span>
                     </div>
                 </div>
@@ -177,6 +187,7 @@
         const patentData = {
             'us-patent': {
                 type: "International Patent Application (US)",
+                typeColor: "text-indigo-600 dark:text-indigo-400",
                 title: "Real-time prediction system and method for histotripsy treatment location",
                 inventors: "Ki Joo Pahk, Muhammad Rafay Mahmood, Seok-min Won, Seong-hyun Kim",
                 date: "Mar 12, 2025",
@@ -186,6 +197,7 @@
             },
             'kr-patent': {
                 type: "Domestic Patent Application (KR)",
+                typeColor: "text-emerald-600 dark:text-emerald-400",
                 title: "Real-time prediction system and method for histotripsy treatment location",
                 titleKr: "히스토트립시 치료 위치 실시간 예측 방법",
                 inventors: "Ki Joo Pahk, Muhammad Rafay Mahmood, Seok-min Won, Seong-hyun Kim",
@@ -205,7 +217,7 @@
             const krTitleHtml = data.titleKr ? `<h3 class="text-base sm:text-lg font-medium text-slate-500 dark:text-slate-400 mt-2 mb-6 pr-8 break-keep">${data.titleKr}</h3>` : `<div class="mb-6"></div>`;
 
             document.getElementById('modal-content').innerHTML = `
-                <p class="text-indigo-600 dark:text-indigo-400 font-bold text-[10px] uppercase tracking-widest mb-2">${data.type}</p>
+                <p class="${data.typeColor} font-bold text-[10px] uppercase tracking-widest mb-2">${data.type}</p>
                 <h2 class="text-2xl sm:text-3xl font-bold dark:text-white leading-tight pr-8">${data.title}</h2>
                 ${krTitleHtml}
                 
