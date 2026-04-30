@@ -21,11 +21,7 @@
             theme: {
                 extend: {
                     colors: {
-                        indigo: { 
-                            350: '#A5B4FC', 
-                            400: '#818CF8', 
-                            600: '#4F46E5' 
-                        }
+                        indigo: { 350: '#A5B4FC', 400: '#818CF8', 600: '#4F46E5' }
                     }
                 }
             }
@@ -76,10 +72,10 @@
         </a>
     
         <div class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-600 dark:text-slate-400">
-            <a href="/#about" class="hover:text-indigo-600 transition-colors">Home</a>
+            <a href="/" class="hover:text-indigo-600 transition-colors">Home</a>
             <a href="news/archive.html" class="hover:text-indigo-600 transition-colors">News</a>
             <a href="experience.html" class="hover:text-indigo-600 transition-colors">Experience</a>
-            <a href="/#publications" class="hover:text-indigo-600 transition-colors">Publications</a>
+            <a href="publications.html" class="hover:text-indigo-600 transition-colors">Publications</a>
             <a href="projects.html" class="hover:text-indigo-600 transition-colors">Projects</a>
             <a href="awards.html" class="hover:text-indigo-600 transition-colors">Awards</a>
             <a href="/contact/" class="hover:text-indigo-600 transition-colors">Contact</a>
@@ -101,10 +97,10 @@
         </div>
     
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-10 flex flex-col gap-8 text-lg font-semibold shadow-2xl animate-fade-in-down">
-            <a href="/#about" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Home</a>
+            <a href="/" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Home</a>
             <a href="news/archive.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">News</a>
             <a href="experience.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Experience</a>
-            <a href="/#publications" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Publications</a>
+            <a href="publications.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Publications</a>
             <a href="projects.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Projects</a>
             <a href="awards.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Awards</a>
             <a href="/contact/" onclick="toggleMobileMenu()" class="pt-6 border-t border-slate-100 dark:border-slate-800 hover:text-indigo-600">Contact Info</a>
@@ -114,12 +110,14 @@
     <header class="max-w-6xl mx-auto px-6 py-24 w-full border-b border-slate-200 dark:border-slate-800">
         <div class="flex flex-col md:flex-row items-center justify-start gap-20">
             
-            <div class="flex-shrink-0 group relative w-50 h-50 md:w-80 md:h-80 rounded-full overflow-hidden shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(79,70,229,0.3)] isolate" style="clip-path: circle(50%);">
-                <img 
-                    src="/assets/KakaoTalk_20250502_112218494_01.jpg" 
-                    alt="Muhammad Rafay Mahmood" 
-                    class="w-full h-full object-cover object-[center_10%] rounded-full transition-transform duration-700 group-hover:scale-110 will-change-transform"
-                >
+            <div class="flex-shrink-0 group relative w-50 h-50 md:w-80 md:h-80 rounded-full overflow-hidden shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(79,70,229,0.3)] isolate bg-white dark:bg-slate-900" style="clip-path: circle(50%);">
+                <div class="w-full h-full p-4 md:p-6 rounded-full flex items-center justify-center bg-white dark:bg-slate-900">
+                    <img 
+                        src="/assets/KakaoTalk_20250502_112218494_01.jpg" 
+                        alt="Muhammad Rafay Mahmood" 
+                        class="max-w-full max-h-full object-contain rounded-full transition-transform duration-700 group-hover:scale-110 will-change-transform"
+                    >
+                </div>
                 
                 <div class="absolute inset-0 rounded-full bg-indigo-900/40 backdrop-blur-sm flex items-center justify-center gap-6 opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <a href="https://www.linkedin.com/in/morafay-917a3228b" target="_blank" class="w-14 h-14 bg-white/20 hover:bg-white/40 text-white rounded-2xl flex items-center justify-center backdrop-blur-md transition-all hover:scale-110">
@@ -175,7 +173,7 @@
                 </div>
                 
                 <div class="pt-8 border-t border-slate-200 dark:border-slate-800">
-                    <p class="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.25em] mb-6">Research Domains</p>
+                    <p class="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.25em] mb-6">Research Interests</p>
                     <div class="flex flex-wrap gap-3">
                         <span class="px-5 py-2 bg-slate-100/80 text-slate-600 dark:bg-slate-800/80 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-semibold hover:border-indigo-400 transition-colors cursor-default">Ultrasound Imaging</span>
                         <span class="px-5 py-2 bg-slate-100/80 text-slate-600 dark:bg-slate-800/80 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-semibold hover:border-indigo-400 transition-colors cursor-default">Deep Learning</span>
@@ -225,40 +223,6 @@
             <div id="news-container" class="grid grid-cols-1 md:grid-cols-3 gap-10"></div>
         </section>
 
-        <section id="publications" class="space-y-10 scroll-mt-28 pb-20">
-            <h2 class="text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-4">
-                <i class="far fa-file-alt text-indigo-600 dark:text-indigo-400"></i> 
-                Publications & Patents
-            </h2>
-            
-            <div class="space-y-6">
-                <div class="bento-card border-l-4 border-l-indigo-500 group/pub">
-                    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-                        <div class="space-y-3">
-                            <p class="text-[11px] font-bold uppercase tracking-[0.25em] text-indigo-500">Manuscript in Preparation</p>
-                            <p class="text-lg text-slate-700 dark:text-slate-200 leading-snug font-medium">
-                                Mahmood MR, Seok MW, Pahk KJ et al.,
-                            </p>
-                            <p class="text-base text-slate-500 dark:text-slate-400 italic">
-                                "Deep learning-based prediction of boiling histotripsy focus using B-mode ultrasound: A proof-of-concept study," 2026.
-                            </p>
-                        </div>
-                        <span class="bg-slate-100 dark:bg-slate-800 px-4 py-1.5 rounded-lg text-xs font-bold text-slate-500 tracking-widest self-start md:self-auto">2026</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="w-full py-16 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-3xl flex flex-col items-center justify-center text-slate-400 mt-10 bg-slate-50/30 dark:bg-transparent">
-                <i class="fas fa-pen-nib text-4xl mb-6 opacity-30"></i>
-                <p class="text-base px-14 text-center max-w-2xl leading-relaxed">
-                    Coming Soon..!
-                </p>
-                <p class="text-base px-12 text-center max-w-2xl leading-relaxed">
-                    Additional manuscripts are currently under peer preparation.
-                </p>
-            </div>
-        </section>
-
     </main>
 
     <footer class="bg-slate-900 text-slate-500 py-16 mt-auto">
@@ -270,7 +234,7 @@
             <div class="flex gap-10 text-sm font-medium">
                 <a href="/contact/" class="hover:text-white transition-colors">Contact</a>
                 <a href="news/archive.html" class="hover:text-white transition-colors">Odyssey Archive</a>
-                <a href="/#about" class="hover:text-white transition-colors">Back to Top</a>
+                <a href="/" class="hover:text-white transition-colors">Back to Top</a>
             </div>
         </div>
     </footer>
