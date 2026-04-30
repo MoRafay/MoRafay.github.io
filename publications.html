@@ -101,11 +101,13 @@
                 <div class="bento-card group flex flex-col sm:flex-row justify-between items-start gap-4" onclick="openPatentModal('us-patent')">
                     <div>
                         <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-indigo-500 mb-2">Intl. Patent Application (US)</p>
-                        <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2 leading-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Histotripsy treatment location real-time prediction system and prediction method</h3>
+                        <!-- 제목을 하나로 통일 -->
+                        <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2 leading-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Real-time prediction system and method for histotripsy treatment location</h3>
                         <p class="text-sm text-slate-500 dark:text-slate-400">Pahk KJ, Mahmood MR, Won SM, Kim SH</p>
                     </div>
                     <div class="flex flex-col items-end gap-2 shrink-0">
-                        <span class="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Priority Claimed</span>
+                        <!-- 뱃지를 PENDING으로 통일하고 색상 부여 -->
+                        <span class="bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Pending</span>
                         <span class="text-xs font-bold text-slate-400 tracking-widest">MAR 2025</span>
                     </div>
                 </div>
@@ -114,11 +116,13 @@
                 <div class="bento-card group flex flex-col sm:flex-row justify-between items-start gap-4" onclick="openPatentModal('kr-patent')">
                     <div>
                         <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 mb-2">Domestic Patent Application (KR)</p>
-                        <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2 leading-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Method for predicting the focal point of histotripsy treatment</h3>
+                        <!-- 제목을 하나로 통일 -->
+                        <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2 leading-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Real-time prediction system and method for histotripsy treatment location</h3>
                         <p class="text-sm text-slate-500 dark:text-slate-400">Pahk KJ, Mahmood MR, Won SM, Kim SH</p>
                     </div>
                     <div class="flex flex-col items-end gap-2 shrink-0">
-                        <span class="bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Filed</span>
+                        <!-- 뱃지를 PENDING으로 통일하고 색상 부여 -->
+                        <span class="bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Pending</span>
                         <span class="text-xs font-bold text-slate-400 tracking-widest">FEB 2025</span>
                     </div>
                 </div>
@@ -173,26 +177,26 @@
         }
         updateThemeUI();
 
-        // 특허 데이터
+        // 특허 데이터 (설명과 제목 완벽히 통일)
         const patentData = {
             'us-patent': {
                 type: "International Patent Application (US)",
-                title: "Histotripsy treatment location real-time prediction system and prediction method",
+                title: "Real-time prediction system and method for histotripsy treatment location",
                 inventors: "Ki Joo Pahk, Muhammad Rafay Mahmood, Seok-min Won, Seong-hyun Kim",
                 date: "Mar 12, 2025",
-                appNo: "KR 10-2025-0032161 (Priority)",
-                status: "Priority Claimed",
-                statusColor: "text-amber-500",
-                desc: "A real-time prediction system and method for histotripsy treatment locations. It includes a trained AI model that predicts the focal position under specific conditions to output the maximum pressure point. It processes ultrasound image data containing skin surface information to predict the focus in real-time based on variations in skin shape and the relative position/distance to the ultrasound transducer."
+                appNo: "KR 10-2025-0032161 (Priority Claimed)",
+                status: "Pending",
+                statusColor: "text-indigo-500 dark:text-indigo-400",
+                desc: "This technology utilizes an AI model to predict and display the histotripsy focal point in real-time within an ultrasound imaging environment prior to treatment. It accounts for changes in the relative position and distance between the focused ultrasound transducer and the patient's skin surface, addressing the limitations of existing pre-treatment prediction methods."
             },
             'kr-patent': {
                 type: "Domestic Patent Application (KR)",
-                title: "Method for predicting the focal point of histotripsy treatment",
+                title: "Real-time prediction system and method for histotripsy treatment location",
                 inventors: "Ki Joo Pahk, Muhammad Rafay Mahmood, Seok-min Won, Seong-hyun Kim",
                 date: "Feb 11, 2025",
-                appNo: "Pending",
-                status: "Filed",
-                statusColor: "text-indigo-500",
+                appNo: "10-2025-0032161",
+                status: "Pending",
+                statusColor: "text-indigo-500 dark:text-indigo-400",
                 desc: "This technology utilizes an AI model to predict and display the histotripsy focal point in real-time within an ultrasound imaging environment prior to treatment. It accounts for changes in the relative position and distance between the focused ultrasound transducer and the patient's skin surface, addressing the limitations of existing pre-treatment prediction methods."
             }
         };
