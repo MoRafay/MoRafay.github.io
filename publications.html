@@ -25,28 +25,60 @@
         .dark .bento-card { background: #1e293b; border-color: #334155; }
         .bento-card:hover { transform: translateY(-3px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); border-color: #818CF8; }
         
-        /* 논문용 카드는 hover 시 테두리 색상 변경 제외 (클릭 이벤트 없음) */
         .pub-card { cursor: default; }
         .pub-card:hover { border-color: #e5e7eb; }
         .dark .pub-card:hover { border-color: #334155; }
+        
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in-down { animation: fadeInDown 0.4s ease-out forwards; }
     </style>
 </head>
 
 <body class="bg-custom-light text-slate-800 dark:text-slate-200 min-h-screen flex flex-col relative">
 
-    <button id="theme-btn" class="fixed top-6 right-6 md:top-8 md:right-8 z-[100] p-2.5 rounded-xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-800 shadow-sm hover:scale-105 transition-all focus:outline-none">
-        <i class="fas fa-sun text-lg text-amber-500 dark:hidden block"></i>
-        <i class="fas fa-moon text-lg text-slate-400 hidden dark:block"></i>
-    </button>
-
-    <div class="max-w-4xl mx-auto px-6 pt-12 pb-4 w-full">
-        <a href="/" class="inline-flex items-center text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 transition-all group">
-            <i class="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i>
-            Back to Home
+    <!-- 메인 네비게이션 바 -->
+    <nav class="max-w-6xl mx-auto px-6 py-6 w-full flex justify-between items-center sticky top-0 bg-custom-light/90 dark:bg-[#0f172a]/90 backdrop-blur-md z-50 border-b border-slate-200/50 dark:border-slate-800/50">
+        <a href="/" class="text-xl font-bold text-slate-900 dark:text-white tracking-tighter hover:text-indigo-600 transition-colors">
+            Muhammad Rafay Mahmood
         </a>
-    </div>
+    
+        <div class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-600 dark:text-slate-400">
+            <a href="/" class="hover:text-indigo-600 transition-colors">Home</a>
+            <a href="news/archive.html" class="hover:text-indigo-600 transition-colors">News</a>
+            <a href="experience.html" class="hover:text-indigo-600 transition-colors">Experience</a>
+            <a href="publications.html" class="text-indigo-600 dark:text-indigo-400">Publications</a>
+            <a href="projects.html" class="hover:text-indigo-600 transition-colors">Projects</a>
+            <a href="awards.html" class="hover:text-indigo-600 transition-colors">Awards</a>
+            <a href="/contact/" class="hover:text-indigo-600 transition-colors">Contact</a>
+            
+            <button id="theme-btn-desktop" class="ml-4 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none">
+                <i class="fas fa-sun text-lg text-amber-500 dark:hidden"></i>
+                <i class="fas fa-moon text-lg text-slate-400 hidden dark:block"></i>
+            </button>
+        </div>
+    
+        <div class="flex md:hidden items-center gap-3">
+            <button id="theme-btn-mobile" class="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none">
+                <i class="fas fa-sun text-lg text-amber-500 dark:hidden"></i>
+                <i class="fas fa-moon text-lg text-slate-400 hidden dark:block"></i>
+            </button>
+            <button onclick="toggleMobileMenu()" class="p-2 text-slate-600 dark:text-slate-400 focus:outline-none">
+                <i id="menu-icon" class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-10 flex flex-col gap-8 text-lg font-semibold shadow-2xl animate-fade-in-down">
+            <a href="/" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Home</a>
+            <a href="news/archive.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">News</a>
+            <a href="experience.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Experience</a>
+            <a href="publications.html" onclick="toggleMobileMenu()" class="text-indigo-600 dark:text-indigo-400">Publications</a>
+            <a href="projects.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Projects</a>
+            <a href="awards.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Awards</a>
+            <a href="/contact/" onclick="toggleMobileMenu()" class="pt-6 border-t border-slate-100 dark:border-slate-800 hover:text-indigo-600">Contact Info</a>
+        </div>
+    </nav>
 
-    <main class="max-w-4xl mx-auto px-6 py-10 w-full flex-grow space-y-24">
+    <main class="max-w-4xl mx-auto px-6 py-20 w-full flex-grow space-y-24">
         
         <header class="mb-12 border-b border-slate-200 dark:border-slate-800 pb-10 text-center md:text-left">
             <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">Publications & Patents</h1>
@@ -55,14 +87,12 @@
             </p>
         </header>
 
-        <!-- Section 1: Publications -->
         <section>
             <h2 class="text-2xl font-bold mb-8 dark:text-white flex items-center gap-3">
                 <i class="far fa-file-alt text-indigo-500"></i> Publications
             </h2>
             
             <div class="space-y-6">
-                <!-- 논문 카드 -->
                 <div class="bento-card pub-card border-l-4 border-l-indigo-500">
                     <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
                         <div class="space-y-3">
@@ -78,7 +108,6 @@
                     </div>
                 </div>
 
-                <!-- 논문용 Coming soon 블록 -->
                 <div class="w-full py-12 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-3xl flex flex-col items-center justify-center text-slate-400 bg-slate-50/30 dark:bg-transparent">
                     <i class="fas fa-pen-nib text-3xl mb-4 opacity-40"></i>
                     <p class="text-base font-bold text-slate-500 dark:text-slate-400 mb-1">Coming Soon..!</p>
@@ -89,7 +118,6 @@
             </div>
         </section>
 
-        <!-- Section 2: Patents -->
         <section>
             <h2 class="text-2xl font-bold mb-8 dark:text-white flex items-center gap-3">
                 <i class="fas fa-file-signature text-indigo-500"></i> Patents
@@ -97,10 +125,8 @@
             
             <div class="space-y-6">
                 
-                <!-- 해외 특허 카드 (시각적 구분: 인디고 테마) -->
                 <div class="bento-card border-l-4 border-l-indigo-500 group flex flex-col sm:flex-row justify-between items-start gap-4" onclick="openPatentModal('us-patent')">
                     <div>
-                        <!-- 시각적 뱃지 디자인 -->
                         <div class="mb-4">
                             <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300 rounded-md text-[10px] font-black uppercase tracking-widest">
                                 <i class="fas fa-globe-americas"></i> International (US)
@@ -115,10 +141,8 @@
                     </div>
                 </div>
 
-                <!-- 국내 특허 카드 (시각적 구분: 에메랄드 테마) -->
                 <div class="bento-card border-l-4 border-l-emerald-500 group flex flex-col sm:flex-row justify-between items-start gap-4" onclick="openPatentModal('kr-patent')">
                     <div>
-                        <!-- 시각적 뱃지 디자인 -->
                         <div class="mb-4">
                             <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300 rounded-md text-[10px] font-black uppercase tracking-widest">
                                 <i class="fas fa-map-marker-alt"></i> Domestic (KR)
@@ -133,7 +157,6 @@
                     </div>
                 </div>
 
-                <!-- 특허용 Coming soon 블록 -->
                 <div class="w-full py-12 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-3xl flex flex-col items-center justify-center text-slate-400 bg-slate-50/30 dark:bg-transparent">
                     <i class="fas fa-lightbulb text-4xl mb-4 opacity-40"></i>
                     <p class="text-base font-bold text-slate-500 dark:text-slate-400 mb-1">Coming Soon..!</p>
@@ -156,7 +179,6 @@
         <span class="text-[10px] font-bold tracking-widest uppercase">TOP</span>
     </a>
 
-    <!-- Patent Modal Background & Container -->
     <div id="patent-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
         <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closePatentModal()"></div>
         <div class="relative bg-white dark:bg-slate-900 max-w-2xl w-full rounded-3xl p-8 sm:p-10 shadow-2xl overflow-y-auto max-h-[90vh] transform scale-95 transition-transform duration-300 border border-slate-200 dark:border-slate-800" id="modal-inner">
@@ -170,20 +192,26 @@
     </div>
 
     <script>
-        const themeBtn = document.getElementById('theme-btn');
-        themeBtn.onclick = () => {
-            document.documentElement.classList.toggle('dark');
-            localStorage.setItem('color-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-            updateThemeUI();
-        };
-        function updateThemeUI() {
-            const isDark = document.documentElement.classList.contains('dark');
-            document.getElementById('light-icon-content')?.classList.toggle('hidden', isDark);
-            document.getElementById('dark-icon-content')?.classList.toggle('hidden', !isDark);
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.classList.replace('fa-times', 'fa-bars');
+            } else {
+                icon.classList.replace('fa-bars', 'fa-times');
+            }
         }
-        updateThemeUI();
 
-        // 특허 데이터 (출원 번호 appNo 삭제)
+        const handleThemeSwitch = () => {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+        };
+        
+        document.getElementById('theme-btn-desktop').onclick = handleThemeSwitch;
+        document.getElementById('theme-btn-mobile').onclick = handleThemeSwitch;
+
         const patentData = {
             'us-patent': {
                 type: "International Patent Application (US)",
@@ -213,7 +241,6 @@
 
         function openPatentModal(id) {
             const data = patentData[id];
-
             const krTitleHtml = data.titleKr ? `<h3 class="text-base sm:text-lg font-medium text-slate-500 dark:text-slate-400 mt-2 mb-6 pr-8 break-keep">${data.titleKr}</h3>` : `<div class="mb-6"></div>`;
 
             document.getElementById('modal-content').innerHTML = `
