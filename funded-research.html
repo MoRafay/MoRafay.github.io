@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funded Research | Muhammad Rafay Mahmood</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+    <script>
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else { document.documentElement.classList.remove('dark'); }
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { indigo: { 350: '#A5B4FC', 400: '#818CF8', 600: '#4F46E5' } } } } }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
+        .bg-custom-light { background-color: #fdfcf8; }
+        .dark .bg-custom-light { background-color: #0f172a; }
+        .bento-card { background: white; border-radius: 12px; border: 1px solid #e5e7eb; padding: 1.75rem; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .dark .bento-card { background: #1e293b; border-color: #334155; }
+        .bento-card:hover { transform: translateY(-3px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); border-color: #818CF8; }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in-down { animation: fadeInDown 0.4s ease-out forwards; }
+    </style>
+</head>
+
+<body class="bg-custom-light text-slate-800 dark:text-slate-200 min-h-screen flex flex-col relative">
+
+    <!-- 메인 네비게이션 바 -->
+    <nav class="max-w-6xl mx-auto px-6 py-6 w-full flex justify-between items-center sticky top-0 bg-custom-light/90 dark:bg-[#0f172a]/90 backdrop-blur-md z-50 border-b border-slate-200/50 dark:border-slate-800/50">
+        <a href="/" class="text-xl font-bold text-slate-900 dark:text-white tracking-tighter hover:text-indigo-600 transition-colors">
+            Muhammad Rafay Mahmood
+        </a>
+
+        <div class="hidden md:flex items-center gap-6 text-xs font-bold uppercase tracking-widest text-slate-600 dark:text-slate-400">
+            <a href="/" class="hover:text-indigo-600 transition-colors">Home</a>
+            <a href="news/archive.html" class="hover:text-indigo-600 transition-colors">News</a>
+            <a href="experience.html" class="hover:text-indigo-600 transition-colors">Experience</a>
+            <a href="publications.html" class="hover:text-indigo-600 transition-colors">Publications</a>
+            <a href="presentations.html" class="hover:text-indigo-600 transition-colors">Talks</a>
+            <a href="projects.html" class="hover:text-indigo-600 transition-colors">Projects</a>
+            <a href="funded-research.html" class="text-indigo-600 dark:text-indigo-400">Funding</a>
+            <a href="skills.html" class="hover:text-indigo-600 transition-colors">Skills</a>
+            <a href="awards.html" class="hover:text-indigo-600 transition-colors">Awards</a>
+            <a href="/contact/" class="hover:text-indigo-600 transition-colors">Contact</a>
+
+            <button id="theme-btn-desktop" class="ml-2 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none">
+                <i class="fas fa-sun text-lg text-amber-500 dark:hidden"></i>
+                <i class="fas fa-moon text-lg text-slate-400 hidden dark:block"></i>
+            </button>
+        </div>
+
+        <div class="flex md:hidden items-center gap-3">
+            <button id="theme-btn-mobile" class="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none">
+                <i class="fas fa-sun text-lg text-amber-500 dark:hidden"></i>
+                <i class="fas fa-moon text-lg text-slate-400 hidden dark:block"></i>
+            </button>
+            <button onclick="toggleMobileMenu()" class="p-2 text-slate-600 dark:text-slate-400 focus:outline-none">
+                <i id="menu-icon" class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-10 flex flex-col gap-8 text-lg font-semibold shadow-2xl animate-fade-in-down">
+            <a href="/" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Home</a>
+            <a href="news/archive.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">News</a>
+            <a href="experience.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Experience</a>
+            <a href="publications.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Publications</a>
+            <a href="presentations.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Talks</a>
+            <a href="projects.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Projects</a>
+            <a href="funded-research.html" onclick="toggleMobileMenu()" class="text-indigo-600 dark:text-indigo-400">Funding</a>
+            <a href="skills.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Skills</a>
+            <a href="awards.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Awards</a>
+            <a href="/contact/" onclick="toggleMobileMenu()" class="pt-6 border-t border-slate-100 dark:border-slate-800 hover:text-indigo-600">Contact Info</a>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-6 py-20 w-full flex-grow space-y-12">
+
+        <header class="mb-4 border-b border-slate-200 dark:border-slate-800 pb-10 text-center md:text-left">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">Funded Research</h1>
+            <p class="text-slate-500 dark:text-slate-400 italic text-lg leading-relaxed">
+                "National research projects I have contributed to."
+            </p>
+            <div class="flex flex-wrap gap-3 mt-6 justify-center md:justify-start text-xs font-bold uppercase tracking-widest">
+                <span class="px-3 py-1.5 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg">5 Projects</span>
+                <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-lg">MSIT · NRF · KEIT · IITP · KHNP</span>
+            </div>
+        </header>
+
+        <section class="space-y-5">
+
+            <div class="bento-card relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1.5 h-full bg-green-500"></div>
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 pl-2">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg dark:text-white leading-snug mb-3">Development of AI-Integrated HIFU System for Thyroid Tumor Diagnosis and Non-invasive Histotripsy Treatment</h3>
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="px-2.5 py-1 bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400 rounded-md text-[11px] font-bold">MSIT / KMDF</span>
+                            <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-md text-[11px] font-bold">Graduate Researcher</span>
+                        </div>
+                    </div>
+                    <span class="text-slate-400 text-[11px] font-bold uppercase tracking-widest whitespace-nowrap sm:text-right">Mar 2024 — Dec 2025</span>
+                </div>
+            </div>
+
+            <div class="bento-card relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1.5 h-full bg-green-500"></div>
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 pl-2">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg dark:text-white leading-snug mb-3">Advancement of Pressure-Modulated Shockwave Histotripsy for Precise Mechanical Tissue Fractionation</h3>
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="px-2.5 py-1 bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400 rounded-md text-[11px] font-bold">NRF</span>
+                            <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-md text-[11px] font-bold">Graduate Researcher</span>
+                        </div>
+                    </div>
+                    <span class="text-slate-400 text-[11px] font-bold uppercase tracking-widest whitespace-nowrap sm:text-right">Mar 2025 — Feb 2026</span>
+                </div>
+            </div>
+
+            <div class="bento-card relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1.5 h-full bg-green-500"></div>
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 pl-2">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg dark:text-white leading-snug mb-3">Development of Focused Ultrasound Therapeutic Device for BBB Opening and Neuromodulation</h3>
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="px-2.5 py-1 bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400 rounded-md text-[11px] font-bold">KEIT</span>
+                            <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-md text-[11px] font-bold">Graduate Researcher</span>
+                        </div>
+                    </div>
+                    <span class="text-slate-400 text-[11px] font-bold uppercase tracking-widest whitespace-nowrap sm:text-right">Sep 2024 — Present</span>
+                </div>
+            </div>
+
+            <div class="bento-card relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1.5 h-full bg-green-500"></div>
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 pl-2">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg dark:text-white leading-snug mb-3">Multilevel/Multimodal AI-Based Technologies for Future Emergency Medical Systems</h3>
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="px-2.5 py-1 bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400 rounded-md text-[11px] font-bold">IITP</span>
+                            <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-md text-[11px] font-bold">Graduate Researcher</span>
+                        </div>
+                    </div>
+                    <span class="text-slate-400 text-[11px] font-bold uppercase tracking-widest whitespace-nowrap sm:text-right">Jul 2024 — Present</span>
+                </div>
+            </div>
+
+            <div class="bento-card relative overflow-hidden opacity-90 hover:opacity-100">
+                <div class="absolute top-0 left-0 w-1.5 h-full bg-slate-300 dark:bg-slate-600"></div>
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 pl-2">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg dark:text-white leading-snug mb-3">AI-Based Ultrasound and Nuclear Medicine Imaging for Liver Function Improvement</h3>
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="px-2.5 py-1 bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400 rounded-md text-[11px] font-bold">KHNP</span>
+                            <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-md text-[11px] font-bold">Undergraduate Researcher</span>
+                        </div>
+                    </div>
+                    <span class="text-slate-400 text-[11px] font-bold uppercase tracking-widest whitespace-nowrap sm:text-right">Oct 2022 — Sep 2024</span>
+                </div>
+            </div>
+
+        </section>
+
+        <footer class="mt-24 pt-10 border-t border-slate-200 dark:border-slate-800 text-center">
+            <a href="/" class="text-indigo-600 font-bold hover:underline transition-all hover:gap-4 flex items-center justify-center gap-2">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+        </footer>
+    </main>
+
+    <a href="#" class="fixed bottom-8 right-8 z-50 flex flex-col items-center gap-1 text-slate-400 hover:text-indigo-600 transition-all duration-300 group">
+        <span class="text-2xl group-hover:-translate-y-1 transition-transform">↑</span>
+        <span class="text-[10px] font-bold tracking-widest uppercase">TOP</span>
+    </a>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.classList.replace('fa-times', 'fa-bars');
+            } else {
+                icon.classList.replace('fa-bars', 'fa-times');
+            }
+        }
+
+        const handleThemeSwitch = () => {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+        };
+
+        document.getElementById('theme-btn-desktop').onclick = handleThemeSwitch;
+        document.getElementById('theme-btn-mobile').onclick = handleThemeSwitch;
+    </script>
+</body>
+</html>

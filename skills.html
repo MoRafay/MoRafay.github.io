@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills | Muhammad Rafay Mahmood</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+    <script>
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else { document.documentElement.classList.remove('dark'); }
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { indigo: { 350: '#A5B4FC', 400: '#818CF8', 600: '#4F46E5' } } } } }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
+        .bg-custom-light { background-color: #fdfcf8; }
+        .dark .bg-custom-light { background-color: #0f172a; }
+        .bento-card { background: white; border-radius: 12px; border: 1px solid #e5e7eb; padding: 1.75rem; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .dark .bento-card { background: #1e293b; border-color: #334155; }
+        .bento-card:hover { transform: translateY(-3px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); border-color: #818CF8; }
+        .chip { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in-down { animation: fadeInDown 0.4s ease-out forwards; }
+    </style>
+</head>
+
+<body class="bg-custom-light text-slate-800 dark:text-slate-200 min-h-screen flex flex-col relative">
+
+    <!-- 메인 네비게이션 바 -->
+    <nav class="max-w-6xl mx-auto px-6 py-6 w-full flex justify-between items-center sticky top-0 bg-custom-light/90 dark:bg-[#0f172a]/90 backdrop-blur-md z-50 border-b border-slate-200/50 dark:border-slate-800/50">
+        <a href="/" class="text-xl font-bold text-slate-900 dark:text-white tracking-tighter hover:text-indigo-600 transition-colors">
+            Muhammad Rafay Mahmood
+        </a>
+
+        <div class="hidden md:flex items-center gap-6 text-xs font-bold uppercase tracking-widest text-slate-600 dark:text-slate-400">
+            <a href="/" class="hover:text-indigo-600 transition-colors">Home</a>
+            <a href="news/archive.html" class="hover:text-indigo-600 transition-colors">News</a>
+            <a href="experience.html" class="hover:text-indigo-600 transition-colors">Experience</a>
+            <a href="publications.html" class="hover:text-indigo-600 transition-colors">Publications</a>
+            <a href="presentations.html" class="hover:text-indigo-600 transition-colors">Talks</a>
+            <a href="projects.html" class="hover:text-indigo-600 transition-colors">Projects</a>
+            <a href="funded-research.html" class="hover:text-indigo-600 transition-colors">Funding</a>
+            <a href="skills.html" class="text-indigo-600 dark:text-indigo-400">Skills</a>
+            <a href="awards.html" class="hover:text-indigo-600 transition-colors">Awards</a>
+            <a href="/contact/" class="hover:text-indigo-600 transition-colors">Contact</a>
+
+            <button id="theme-btn-desktop" class="ml-2 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none">
+                <i class="fas fa-sun text-lg text-amber-500 dark:hidden"></i>
+                <i class="fas fa-moon text-lg text-slate-400 hidden dark:block"></i>
+            </button>
+        </div>
+
+        <div class="flex md:hidden items-center gap-3">
+            <button id="theme-btn-mobile" class="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none">
+                <i class="fas fa-sun text-lg text-amber-500 dark:hidden"></i>
+                <i class="fas fa-moon text-lg text-slate-400 hidden dark:block"></i>
+            </button>
+            <button onclick="toggleMobileMenu()" class="p-2 text-slate-600 dark:text-slate-400 focus:outline-none">
+                <i id="menu-icon" class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-10 flex flex-col gap-8 text-lg font-semibold shadow-2xl animate-fade-in-down">
+            <a href="/" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Home</a>
+            <a href="news/archive.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">News</a>
+            <a href="experience.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Experience</a>
+            <a href="publications.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Publications</a>
+            <a href="presentations.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Talks</a>
+            <a href="projects.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Projects</a>
+            <a href="funded-research.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Funding</a>
+            <a href="skills.html" onclick="toggleMobileMenu()" class="text-indigo-600 dark:text-indigo-400">Skills</a>
+            <a href="awards.html" onclick="toggleMobileMenu()" class="hover:text-indigo-600">Awards</a>
+            <a href="/contact/" onclick="toggleMobileMenu()" class="pt-6 border-t border-slate-100 dark:border-slate-800 hover:text-indigo-600">Contact Info</a>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-6 py-20 w-full flex-grow space-y-16">
+
+        <header class="mb-4 border-b border-slate-200 dark:border-slate-800 pb-10 text-center md:text-left">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">Skills</h1>
+            <p class="text-slate-500 dark:text-slate-400 italic text-lg leading-relaxed">
+                "Tools, research methods, and languages."
+            </p>
+        </header>
+
+        <!-- Technical Stack -->
+        <section>
+            <h2 class="text-2xl font-bold mb-8 dark:text-white flex items-center gap-3">
+                <i class="fas fa-code text-indigo-500"></i> Technical Stack
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="bento-card">
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-4">Programming &amp; Frameworks</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="chip bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400">Python</span>
+                        <span class="chip bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400">MATLAB</span>
+                        <span class="chip bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400">TensorFlow / Keras</span>
+                        <span class="chip bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400">PyTorch</span>
+                        <span class="chip bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400">OpenCV</span>
+                    </div>
+                </div>
+                <div class="bento-card">
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-4">Simulation &amp; Tools</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="chip bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300">k-Wave</span>
+                        <span class="chip bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300">Beamforming</span>
+                        <span class="chip bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300">Passive Cavitation Imaging</span>
+                        <span class="chip bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300">3D Design / Printing</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Skills -->
+        <section>
+            <h2 class="text-2xl font-bold mb-8 dark:text-white flex items-center gap-3">
+                <i class="fas fa-flask text-indigo-500"></i> Research Skills
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+                <div class="bento-card">
+                    <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-4">
+                        <i class="fas fa-wave-square text-xl"></i>
+                    </div>
+                    <h3 class="font-bold dark:text-white mb-2">Ultrasound Imaging</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Pre-treatment algorithm development, including layer detection and focus prediction for boiling histotripsy.</p>
+                </div>
+
+                <div class="bento-card">
+                    <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-4">
+                        <i class="fas fa-chart-line text-xl"></i>
+                    </div>
+                    <h3 class="font-bold dark:text-white mb-2">Image Processing &amp; Data Analysis</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Raw data acquisition, processing, and quantitative image analysis with a focus on beamforming and passive cavitation imaging.</p>
+                </div>
+
+                <div class="bento-card">
+                    <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-4">
+                        <i class="fas fa-cubes text-xl"></i>
+                    </div>
+                    <h3 class="font-bold dark:text-white mb-2">Numerical Simulation</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Simulating and validating physical experimental conditions using computational acoustic tools.</p>
+                </div>
+
+                <div class="bento-card">
+                    <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-4">
+                        <i class="fas fa-cube text-xl"></i>
+                    </div>
+                    <h3 class="font-bold dark:text-white mb-2">Rapid Prototyping</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">3D design and printing of custom components for specialized research setups.</p>
+                </div>
+
+                <div class="bento-card">
+                    <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-4">
+                        <i class="fas fa-diagram-project text-xl"></i>
+                    </div>
+                    <h3 class="font-bold dark:text-white mb-2">Experimental Planning</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Designing and executing multi-stage protocols from concept definition through hardware implementation.</p>
+                </div>
+
+                <div class="bento-card">
+                    <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-4">
+                        <i class="fas fa-screwdriver-wrench text-xl"></i>
+                    </div>
+                    <h3 class="font-bold dark:text-white mb-2">System Setup &amp; Operation</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Hands-on configuration and operation of ultrasound experimental hardware setups.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Languages -->
+        <section>
+            <h2 class="text-2xl font-bold mb-8 dark:text-white flex items-center gap-3">
+                <i class="fas fa-language text-indigo-500"></i> Languages
+            </h2>
+            <div class="space-y-4">
+
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 p-6 bg-white dark:bg-[#1e293b] rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                    <div>
+                        <p class="font-bold dark:text-white text-lg">Urdu</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Native</p>
+                    </div>
+                    <span class="bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 font-bold text-xs px-4 py-2 rounded-lg tracking-widest self-start sm:self-auto">Native</span>
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 p-6 bg-white dark:bg-[#1e293b] rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                    <div>
+                        <p class="font-bold dark:text-white text-lg">Korean</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Fluent · TOPIK Level 6 (282 / 300)</p>
+                    </div>
+                    <span class="bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 font-bold text-xs px-4 py-2 rounded-lg tracking-widest self-start sm:self-auto">TOPIK 6</span>
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 p-6 bg-white dark:bg-[#1e293b] rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                    <div>
+                        <p class="font-bold dark:text-white text-lg">English</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Professional Working Proficiency</p>
+                    </div>
+                    <span class="bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 font-bold text-xs px-4 py-2 rounded-lg tracking-widest self-start sm:self-auto">Professional</span>
+                </div>
+
+            </div>
+        </section>
+
+        <footer class="mt-24 pt-10 border-t border-slate-200 dark:border-slate-800 text-center">
+            <a href="/" class="text-indigo-600 font-bold hover:underline transition-all hover:gap-4 flex items-center justify-center gap-2">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+        </footer>
+    </main>
+
+    <a href="#" class="fixed bottom-8 right-8 z-50 flex flex-col items-center gap-1 text-slate-400 hover:text-indigo-600 transition-all duration-300 group">
+        <span class="text-2xl group-hover:-translate-y-1 transition-transform">↑</span>
+        <span class="text-[10px] font-bold tracking-widest uppercase">TOP</span>
+    </a>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.classList.replace('fa-times', 'fa-bars');
+            } else {
+                icon.classList.replace('fa-bars', 'fa-times');
+            }
+        }
+
+        const handleThemeSwitch = () => {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+        };
+
+        document.getElementById('theme-btn-desktop').onclick = handleThemeSwitch;
+        document.getElementById('theme-btn-mobile').onclick = handleThemeSwitch;
+    </script>
+</body>
+</html>
